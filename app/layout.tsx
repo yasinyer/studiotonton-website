@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Dock } from '@/components/Dock';
+import { Analytics } from '@/components/Analytics';
 import { site } from '@/lib/site';
 
 const hanken = Hanken_Grotesk({
@@ -68,6 +69,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         {children}
         <Dock />
+        <Analytics />
       </body>
     </html>
   );

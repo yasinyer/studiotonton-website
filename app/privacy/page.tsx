@@ -39,13 +39,19 @@ export default function Privacy() {
             </p>
             <h2>Verwerkers</h2>
             <p>
-              Voor het versturen van e-mails en het hosten van deze website gebruiken we betrouwbare partners (zoals Vercel en
-              Resend) die je gegevens enkel in onze opdracht verwerken.
+              Voor het versturen van e-mails en het hosten van deze website gebruiken we betrouwbare partners (zoals Vercel, Resend en
+              PostHog) die je gegevens enkel in onze opdracht verwerken.
+            </p>
+            <h2>Statistieken</h2>
+            <p>
+              Om de website te verbeteren meten we anoniem hoe ze gebruikt wordt, bijvoorbeeld welke pagina’s bezocht worden en
+              hoeveel mensen een offerte aanvragen. Daarvoor gebruiken we PostHog, met servers in de EU. We plaatsen daarbij geen
+              cookies, maken geen profielen van bezoekers en nemen geen sessies op.
             </p>
             <h2>Cookies</h2>
             <p>
-              Deze website gebruikt geen tracking-cookies zonder je toestemming. Je voorkeur voor licht of donker thema en een
-              half ingevulde offerte worden enkel lokaal in je browser bewaard.
+              Deze website plaatst geen tracking-cookies. Je voorkeur voor licht of donker thema en een half ingevulde offerte
+              worden enkel lokaal in je browser bewaard.
             </p>
             <h2>Je rechten</h2>
             <p>

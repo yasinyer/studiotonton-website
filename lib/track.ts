@@ -1,6 +1,10 @@
+import posthog from 'posthog-js';
+
 /**
- * Lichtgewicht conversie-tracking. Duwt events naar window.dataLayer (Google Tag Manager / GA4)
- * en, indien aanwezig, naar Plausible. Zonder analytics-script doet dit niets.
+ * Conversie-tracking. Stuurt events naar PostHog (als die actief is) en duwt ze ook naar
+ * window.dataLayer (GTM/GA4) en Plausible, mocht je die later toevoegen.
+ *
+ * Events: cta_click, quote_start, quote_step (step 1–4), generate_lead.
  */
 type Props = Record<string, string | number | boolean | undefined>;
 
@@ -14,6 +18,7 @@ declare global {
 export function track(event: string, props: Props = {}) {
   if (typeof window === 'undefined') return;
   try {
+    if (posthog.__loaded) posthog.capture(event, props);
     window.dataLayer = window.dataLayer || [];
     window.dataLayer.push({ event, ...props });
     window.plausible?.(event, { props });

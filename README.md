@@ -38,12 +38,19 @@ Het formulier op `/offerte` (4 stappen) post naar `app/api/offerte/route.ts`. St
 Zonder `RESEND_API_KEY` én zonder `LEAD_WEBHOOK_URL` geeft de API in productie een fout (503). De bezoeker ziet dan
 een melding om te mailen. Zo gaat er nooit stilletjes een lead verloren.
 
-## Conversie-tracking
+## Analytics (PostHog)
 
-`lib/track.ts` duwt events naar `window.dataLayer` (GTM/GA4) en Plausible, als die aanwezig zijn:
+PostHog meet bezoeken en conversies **zonder cookies** (geen cookiebanner nodig): `persistence: 'memory'`, geen
+persoonsprofielen, geen sessie-opnames. Data gaat naar PostHog EU via `/ingest` op ons eigen domein (rewrite in
+`next.config.mjs`), zodat adblockers de metingen niet tegenhouden.
+
+Zet in Vercel `NEXT_PUBLIC_POSTHOG_KEY` (projectsleutel `phc_…` uit PostHog EU) en redeploy. Zonder sleutel staat
+analytics uit.
+
+Events (`lib/track.ts`), naast automatische pageviews en klikken:
 
 - `cta_click`: klik op de offerteknop in de dock
-- `quote_start`, `quote_step`: begin en voortgang in het formulier
-- `generate_lead`: verstuurde aanvraag (de bezoeker landt daarna op `/bedankt`)
+- `quote_start`, `quote_step` (`step` 1–4): begin en voortgang in het offerteformulier
+- `generate_lead`: verstuurde aanvraag (met `services` en `budget`)
 
-Extra knoppen hebben een `data-cta`-attribuut, zodat je ze in GTM als trigger kunt gebruiken.
+Knoppen hebben een `data-cta`-attribuut, zodat je ze in PostHog als actie kunt gebruiken.
