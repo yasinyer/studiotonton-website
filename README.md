@@ -23,6 +23,16 @@ npm run build    # productie-build
 
 Alle teksten, **vanaf-prijzen**, cases, FAQ, contactgegevens en formulieropties staan in **`lib/site.ts`**.
 
+### Dienstpagina's en cases
+
+- **Dienstpagina's** (`/diensten/…`, bv. `/diensten/webdesign-hasselt`) en **uitgewerkte cases** (`/werk/…`) staan in
+  **`lib/pages.ts`**. Een nieuwe case: voeg ze toe aan `caseStudies` (de `title` moet gelijk zijn aan die in `cases` in
+  `lib/site.ts`) en zet de afbeeldingen in `public/img/cases/`. Sitemap, footer en de caselijst op de homepage
+  pikken nieuwe pagina's automatisch op.
+- **Reviews** staan in `testimonials` in `lib/site.ts` (enkel echte citaten, met toestemming). Een review bij één
+  case zet je in `testimonial` van die case in `lib/pages.ts`. Vul `googleReviewsUrl` in zodra je Google-bedrijfsprofiel
+  reviews heeft, dan verschijnt er een link naar je reviews.
+
 ## Offerte-aanvragen (leads)
 
 Het formulier op `/offerte` (4 stappen) post naar `app/api/offerte/route.ts`. Stel in Vercel deze environment variables in

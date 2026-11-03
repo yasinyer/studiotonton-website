@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { Logo } from './Logo';
 import { ArrowDiag } from './Icons';
-import { quote, site } from '@/lib/site';
+import { quote, services, site } from '@/lib/site';
+import { caseStudies, servicePageFor } from '@/lib/pages';
 
 export function Header() {
   return (
@@ -44,6 +45,48 @@ export function Footer() {
               ))}
           </div>
         </div>
+        <nav className="foot__nav" aria-label="Footer">
+          <div>
+            <span className="label">Diensten</span>
+            <ul>
+              {services.map((s) => {
+                const pg = servicePageFor(s.key);
+                return pg ? (
+                  <li key={s.key}>
+                    <Link href={`/diensten/${pg.slug}`}>{s.title}</Link>
+                  </li>
+                ) : null;
+              })}
+            </ul>
+          </div>
+          <div>
+            <span className="label">Werk</span>
+            <ul>
+              {caseStudies.map((c) => (
+                <li key={c.slug}>
+                  <Link href={`/werk/${c.slug}`}>{c.title}</Link>
+                </li>
+              ))}
+              <li>
+                <Link href="/#werk">Alle projecten</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <span className="label">studio tonton</span>
+            <ul>
+              <li>
+                <Link href="/offerte">Gratis offerte</Link>
+              </li>
+              <li>
+                <Link href="/#faq">Veelgestelde vragen</Link>
+              </li>
+              <li>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
         <div className="foot__bottom">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
             <Logo />

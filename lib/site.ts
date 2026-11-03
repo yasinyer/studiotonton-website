@@ -14,6 +14,7 @@ export const site = {
   instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen
   linkedin: '', // leeg = verborgen
   responseTime: 'binnen 1 werkdag',
+  googleReviewsUrl: '', // link naar je reviews op Google, zodra je bedrijfsprofiel er is — leeg = verborgen
   description:
     'studio tonton is een designstudio uit Hasselt. Websites, branding, motion en AI voor lokale ondernemers, met een vaste prijs vooraf en één aanspreekpunt.',
 };
@@ -253,7 +254,11 @@ export const reasons = [
   },
 ];
 
-export const testimonials = [
+/**
+ * Reviews. Zet de nieuwste en meest herkenbare (lokale) klant bovenaan.
+ * Gebruik enkel echte citaten, met toestemming van de klant. avatar is optioneel.
+ */
+export const testimonials: { quote: string; name: string; role: string; avatar?: string }[] = [
   {
     quote:
       '…not only delivered excellent visual design work for the more “traditional” projects like the KBC Mobile app but also successfully took on more “creative” assignments thanks to his illustration and animation skills.',

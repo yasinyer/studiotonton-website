@@ -1,11 +1,12 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 import type { Case } from '@/lib/site';
 
 /** Genummerde caselijst met sticky preview op desktop, zoals "Geselecteerd werk" op yasinyer.be. */
-export function WorkList({ items }: { items: Case[] }) {
+export function WorkList({ items }: { items: (Case & { href?: string })[] }) {
   const [active, setActive] = useState(0);
 
   return (
@@ -18,7 +19,7 @@ export function WorkList({ items }: { items: Case[] }) {
             onMouseEnter={() => setActive(i)}
           >
             <span className="wrow__n">{String(i + 1).padStart(2, '0')}</span>
-            <h3 className="wrow__t">{c.title}</h3>
+            <h3 className="wrow__t">{c.href ? <Link href={c.href}>{c.title}</Link> : c.title}</h3>
             <span className="wrow__y">{c.year}</span>
             <div className="wrow__meta">
               <span className="wrow__client">
@@ -30,6 +31,11 @@ export function WorkList({ items }: { items: Case[] }) {
                   {t}
                 </span>
               ))}
+              {c.href && (
+                <Link href={c.href} className="wrow__link">
+                  Bekijk case →
+                </Link>
+              )}
             </div>
             <div className="wrow__img">
               <Image src={c.image} alt={`${c.title} voor ${c.client}`} width={960} height={600} sizes="100vw" loading="lazy" />

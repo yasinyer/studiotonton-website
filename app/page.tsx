@@ -4,6 +4,7 @@ import { Footer, Header } from '@/components/Chrome';
 import { Arrow, Check, Plus } from '@/components/Icons';
 import { Reveal } from '@/components/Reveal';
 import { WorkList } from '@/components/WorkList';
+import { caseStudyFor, servicePageFor } from '@/lib/pages';
 import { cases, clientNames, clients, euro, faq, reasons, services, site, stats, steps, testimonials } from '@/lib/site';
 
 export default function Home() {
@@ -109,7 +110,7 @@ export default function Home() {
                 <h2 className="t-h2">Van koffiebar tot de beste bankapp ter wereld.</h2>
               </div>
             </div>
-            <WorkList items={cases} />
+            <WorkList items={cases.map((c) => ({ ...c, href: caseStudyFor(c.title) ? `/werk/${caseStudyFor(c.title)!.slug}` : undefined }))} />
             <div className="work__cta rv">
               <Link href="/offerte" className="btn" data-cta="work">
                 Ook zoiets voor jouw zaak?
@@ -141,6 +142,11 @@ export default function Home() {
                   <div>
                     <h3 className="svc__title">{s.title}</h3>
                     <p className="svc__pitch">{s.pitch}</p>
+                    {servicePageFor(s.key) && (
+                      <Link href={`/diensten/${servicePageFor(s.key)!.slug}`} className="svc__more">
+                        Meer over {s.title.toLowerCase()} <Arrow className="" />
+                      </Link>
+                    )}
                     <div className="svc__ex">
                       <span className="tag" style={{ background: 'transparent', paddingLeft: 0 }}>
                         Bijvoorbeeld
@@ -259,18 +265,25 @@ export default function Home() {
             </div>
             <div className="rv">
               <span className="label">In hun woorden</span>
-              {testimonials.map((t) => (
-                <figure key={t.name} className="tcard" style={{ marginTop: 14 }}>
-                  <blockquote>“{t.quote}”</blockquote>
-                  <figcaption>
-                    <Image src={t.avatar} alt="" width={44} height={44} />
-                    <div>
-                      <b>{t.name}</b>
-                      <span>{t.role}</span>
-                    </div>
-                  </figcaption>
-                </figure>
-              ))}
+              <div className="tgrid">
+                {testimonials.map((t) => (
+                  <figure key={t.name} className="tcard">
+                    <blockquote>“{t.quote}”</blockquote>
+                    <figcaption>
+                      {t.avatar && <Image src={t.avatar} alt="" width={44} height={44} />}
+                      <div>
+                        <b>{t.name}</b>
+                        <span>{t.role}</span>
+                      </div>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
+              {site.googleReviewsUrl && (
+                <a href={site.googleReviewsUrl} target="_blank" rel="noreferrer" className="svc__more">
+                  Lees alle reviews op Google <Arrow className="" />
+                </a>
+              )}
               <div className="awards">
                 <div className="award">
                   <b>Best Banking App in the World</b>
