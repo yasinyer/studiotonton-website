@@ -11,11 +11,26 @@ import posthog from 'posthog-js';
  * - data op de EU-servers van PostHog, verstuurd via /ingest op ons eigen domein
  *
  * Staat pas aan als NEXT_PUBLIC_POSTHOG_KEY in Vercel is ingesteld.
+ * Je eigen browser sluit je uit met ?intern=aan (bewaard in localStorage, enkel op jouw toestel).
  */
+const INTERN = 'tt-intern';
+
+/** Eigen bezoeken uitsluiten: open de site één keer met ?intern=aan (of ?intern=uit om weer te meten). */
+function isIntern() {
+  try {
+    const q = new URLSearchParams(window.location.search).get('intern');
+    if (q === 'aan') localStorage.setItem(INTERN, '1');
+    if (q === 'uit') localStorage.removeItem(INTERN);
+    return localStorage.getItem(INTERN) === '1';
+  } catch {
+    return false;
+  }
+}
+
 export function Analytics() {
   useEffect(() => {
     const key = process.env.NEXT_PUBLIC_POSTHOG_KEY;
-    if (!key || posthog.__loaded) return;
+    if (!key || posthog.__loaded || isIntern()) return;
     posthog.init(key, {
       api_host: '/ingest',
       ui_host: 'https://eu.posthog.com',

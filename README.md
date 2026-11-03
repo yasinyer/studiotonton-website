@@ -44,6 +44,9 @@ PostHog meet bezoeken en conversies **zonder cookies** (geen cookiebanner nodig)
 persoonsprofielen, geen sessie-opnames. Data gaat naar PostHog EU via `/ingest` op ons eigen domein (rewrite in
 `next.config.mjs`), zodat adblockers de metingen niet tegenhouden.
 
+Eigen bezoeken uitsluiten: open `https://www.studiotonton.be/?intern=aan` één keer op elk toestel dat je gebruikt
+(`?intern=uit` zet het terug). Een IP-filter werkt niet, want het PostHog-project anonimiseert IP-adressen.
+
 Zet in Vercel `NEXT_PUBLIC_POSTHOG_KEY` (projectsleutel `phc_…` uit PostHog EU) en redeploy. Zonder sleutel staat
 analytics uit.
 
