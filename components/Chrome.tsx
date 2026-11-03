@@ -54,12 +54,16 @@ export function Footer() {
             </div>
           </div>
           <div className="foot__links" style={{ alignSelf: 'flex-end' }}>
-            <a href={site.instagram} target="_blank" rel="noreferrer">
-              Instagram
-            </a>
-            <a href={site.linkedin} target="_blank" rel="noreferrer">
-              LinkedIn
-            </a>
+            {site.instagram && (
+              <a href={site.instagram} target="_blank" rel="noreferrer">
+                Instagram
+              </a>
+            )}
+            {site.linkedin && (
+              <a href={site.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            )}
             <Link href="/privacy">Privacy</Link>
             <span>© {year} studio tonton</span>
           </div>

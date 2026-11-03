@@ -11,8 +11,8 @@ export const site = {
   phone: '', // bv. '+32 470 00 00 00' — leeg = verborgen
   city: 'Hasselt',
   region: 'Limburg',
-  instagram: 'https://www.instagram.com/',
-  linkedin: 'https://www.linkedin.com/',
+  instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen
+  linkedin: '', // leeg = verborgen
   responseTime: 'binnen 1 werkdag',
   description:
     'studio tonton is een designstudio uit Hasselt. Websites, branding, motion en AI voor lokale ondernemers, met een vaste prijs vooraf en één aanspreekpunt.',
