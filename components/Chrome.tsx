@@ -1,0 +1,70 @@
+import Link from 'next/link';
+import { Logo } from './Logo';
+import { ArrowDiag } from './Icons';
+import { quote, site } from '@/lib/site';
+
+export function Header() {
+  return (
+    <header className="top">
+      <div className="wrap">
+        <Link href="/" className="brand" aria-label="studio tonton, naar home">
+          <Logo />
+        </Link>
+        <span className="label is-on brand__meta">
+          <span className="dot" />
+          Nieuwe projecten welkom
+        </span>
+      </div>
+    </header>
+  );
+}
+
+export function Footer() {
+  const year = new Date().getFullYear();
+  return (
+    <footer className="foot" id="contact">
+      <div className="wrap">
+        <div className="foot__cta">
+          <span className="label">
+            <span className="dot" /> Antwoord {site.responseTime}
+          </span>
+          <p className="t-lead" style={{ color: '#c7c7c7', maxWidth: '36ch' }}>
+            Benieuwd wat we voor jouw zaak kunnen doen? Vertel het ons in 2 minuten, je krijgt een vrijblijvend voorstel.
+          </p>
+          <Link href="/offerte" className="t-xl foot__big" data-cta="footer">
+            Vraag je offerte&nbsp;<ArrowDiag className="" />
+          </Link>
+          <div className="quick" aria-label="Start meteen met">
+            {quote.services
+              .filter((s) => s.key !== 'unsure')
+              .map((s) => (
+                <Link key={s.key} href={`/offerte?dienst=${s.key}`}>
+                  {s.label}
+                </Link>
+              ))}
+          </div>
+        </div>
+        <div className="foot__bottom">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+            <Logo />
+            <div className="foot__links">
+              <a href={`mailto:${site.email}`}>{site.email}</a>
+              {site.phone && <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>}
+              <span>{site.city}, België</span>
+            </div>
+          </div>
+          <div className="foot__links" style={{ alignSelf: 'flex-end' }}>
+            <a href={site.instagram} target="_blank" rel="noreferrer">
+              Instagram
+            </a>
+            <a href={site.linkedin} target="_blank" rel="noreferrer">
+              LinkedIn
+            </a>
+            <Link href="/privacy">Privacy</Link>
+            <span>© {year} studio tonton</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+}
