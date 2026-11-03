@@ -6,7 +6,7 @@
 
 export const site = {
   name: 'studio tonton',
-  url: 'https://studiotonton.be',
+  url: 'https://www.studiotonton.be',
   email: 'hallo@studiotonton.be',
   phone: '', // bv. '+32 470 00 00 00' — leeg = verborgen
   city: 'Hasselt',
