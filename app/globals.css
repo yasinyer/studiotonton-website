@@ -29,7 +29,7 @@
   --dur-fast: 0.18s;
   --dur-base: 0.3s;
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
-  --gx: 20px;
+  --gx: 64px;
   --font-sans: var(--font-hanken), -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
   color-scheme: light;
 }
@@ -57,11 +57,9 @@
   color-scheme: dark;
 }
 
-@media (min-width: 720px) {
-  :root { --gx: 40px; }
-}
-@media (min-width: 1200px) {
-  :root { --gx: 64px; }
+/* Edge-to-edge zoals yasinyer.be: geen maximale breedte, enkel een vaste zijmarge. */
+@media (max-width: 899px) {
+  :root { --gx: 20px; }
 }
 
 /* ───────── base ───────── */
@@ -96,7 +94,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .skip:focus { top: 16px; }
 
-.wrap { width: 100%; max-width: 1600px; margin-inline: auto; padding-inline: var(--gx); }
+.wrap { width: 100%; padding-inline: var(--gx); }
 .section { padding-block: 72px; }
 @media (min-width: 900px) { .section { padding-block: 120px; } }
 .hairline-top { border-top: 1px solid var(--border-default); }
