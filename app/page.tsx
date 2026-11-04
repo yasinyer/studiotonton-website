@@ -198,8 +198,8 @@ export default function Home() {
             <span className="label">In hun woorden</span>
             <Reviews items={testimonials} moreHref={owner.recommendations || undefined} />
             {site.googleReviewsUrl && (
-              <a href={site.googleReviewsUrl} target="_blank" rel="noreferrer" className="svc__more">
-                Lees alle reviews op Google <Arrow className="" />
+              <a href={site.googleReviewsUrl} target="_blank" rel="noreferrer" className="svc__more" data-cta="google-reviews">
+                Bekijk of schrijf een review op Google <Arrow className="" />
               </a>
             )}
           </div>

@@ -15,7 +15,7 @@ export const site = {
   instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen
   linkedin: '', // leeg = verborgen
   responseTime: 'binnen 1 werkdag',
-  googleReviewsUrl: '', // link naar je reviews op Google, zodra je bedrijfsprofiel er is — leeg = verborgen
+  googleReviewsUrl: 'https://g.page/r/CcG1MXsqgXKXEAE/review', // link naar je reviews op Google — leeg = verborgen
   description:
     'studio tonton is een designstudio uit Hasselt. Websites, branding, motion en AI voor lokale ondernemers, met een vaste prijs vooraf en één aanspreekpunt.',
 };
