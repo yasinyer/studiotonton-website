@@ -115,16 +115,34 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
 
-        <section className="section" style={{ paddingTop: 0 }}>
-          <div className="wrap gallery">
-            {study.images.map((img) => (
-              <figure key={img.src} className={`rv${img.wide ? ' gallery__wide' : ''}`}>
-                <Image src={img.src} alt={img.alt} width={img.w} height={img.h} sizes={img.wide ? '100vw' : '(min-width: 720px) 50vw, 100vw'} />
-                <figcaption>{img.alt}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
+        {study.images.length > 0 && (
+          <section className="section" style={{ paddingTop: 0 }}>
+            <div className="wrap gallery">
+              {study.images.map((img) => {
+                const pic = (
+                  <Image src={img.src} alt={img.href ? '' : img.alt} width={img.w} height={img.h} sizes={img.wide ? '100vw' : '(min-width: 720px) 50vw, 100vw'} />
+                );
+                return (
+                  <figure key={img.src} className={`rv${img.wide ? ' gallery__wide' : ''}`}>
+                    {img.href ? (
+                      <a href={img.href} target="_blank" rel="noreferrer" className="gallery__video" aria-label={`Bekijk op YouTube: ${img.alt}`}>
+                        {pic}
+                        <span className="gallery__play" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </span>
+                      </a>
+                    ) : (
+                      pic
+                    )}
+                    <figcaption>{img.alt}</figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {study.testimonial && (
           <section className="section" style={{ paddingTop: 0 }}>

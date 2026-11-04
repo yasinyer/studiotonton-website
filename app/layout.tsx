@@ -3,6 +3,7 @@ import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Dock } from '@/components/Dock';
 import { Analytics } from '@/components/Analytics';
+import { Magnetic } from '@/components/Magnetic';
 import { owner, site } from '@/lib/site';
 
 const hanken = Hanken_Grotesk({
@@ -73,6 +74,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         {children}
         <Dock />
         <Analytics />
+        <Magnetic />
       </body>
     </html>
   );

@@ -681,3 +681,15 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 }
 .casecta { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 48px; }
 .casecta__text { display: flex; flex-direction: column; gap: 16px; max-width: 60ch; }
+
+/* Video's in de galerij (bv. nwsnwsnws): thumbnail met afspeelknop, opent op YouTube */
+.gallery__video { position: relative; display: block; overflow: hidden; }
+.gallery__video img { transition: transform 0.6s var(--ease-out); }
+.gallery__video:hover img { transform: scale(1.03); }
+.gallery__play {
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 64px; height: 64px; border-radius: 50%;
+  display: grid; place-items: center; background: rgba(22, 22, 22, 0.78); color: #fff;
+  transition: background var(--dur-fast) var(--ease-out), scale var(--dur-base) var(--ease-out);
+}
+.gallery__play svg { width: 24px; height: 24px; margin-left: 3px; }
+.gallery__video:hover .gallery__play { background: #161616; scale: 1.08; }

@@ -53,7 +53,7 @@ export default async function Bedankt({ searchParams }: { searchParams: Promise<
               <div style={{ marginTop: 32 }}>
                 <span className="label label--soft">Intussen even kijken?</span>
                 <div style={{ marginTop: 14 }}>
-                  <CaseCards refs={caseStudies.map((c) => c.slug)} />
+                  <CaseCards refs={caseStudies.slice(0, 4).map((c) => c.slug)} />
                 </div>
               </div>
             </div>

@@ -222,7 +222,7 @@ export type CaseStudy = {
   metaDescription: string;
   intro: string[];
   highlights: { title: string; text: string }[];
-  images: { src: string; alt: string; wide?: boolean; w: number; h: number }[];
+  images: { src: string; alt: string; wide?: boolean; w: number; h: number; href?: string }[]; // href: bv. een video op YouTube
   testimonial?: { quote: string; name: string; role: string };
 };
 
@@ -297,6 +297,238 @@ export const caseStudies: CaseStudy[] = [
       { src: '/img/cases/shanti-2.webp', alt: 'De locatie met live openingsuren en de cadeaubonnen op mobiel', w: 1920, h: 2103 },
       { src: '/img/cases/shanti-3.webp', alt: 'Merkoverzicht met logo, kleuren, typografie en illustraties', wide: true, w: 1920, h: 933 },
       { src: '/img/cases/shanti-4.webp', alt: 'De kaart en de pagina voor privé-events op desktop', wide: true, w: 1920, h: 933 },
+    ],
+  },
+  {
+    slug: 'surprisepay',
+    title: 'SurprisePay',
+    client: 'KBC Bank & Verzekeringen',
+    sector: 'Bank en verzekeringen',
+    location: 'KBC Mobile, België',
+    year: 2025,
+    services: ['UI design', 'Illustratie', 'Animatie'],
+    quote: 'Dagelijkse bankzaken hoeven niet saai te zijn. Soms zit de meerwaarde net in een klein gebaar.',
+    metaDescription:
+      'SurprisePay in KBC Mobile: een overschrijving met een thema, een persoonlijk bericht of een foto. Volledig herontworpen, in light en dark mode en met toegankelijkheid als vaste stap.',
+    intro: [
+      'SurprisePay is een functie in KBC Mobile waarmee je bij een overschrijving een thema meestuurt, eventueel met een persoonlijk bericht of een foto.',
+      'Als UI designer herontwierp Yasin de volledige ervaring: van een gedateerde flow naar een frisse, hedendaagse interface, met eigen illustraties en animaties.',
+    ],
+    highlights: [
+      {
+        title: 'Van gedateerd naar fris',
+        text: 'De volledige flow opnieuw ontworpen, van het kiezen van een thema tot het moment dat de ontvanger het opent.',
+      },
+      {
+        title: 'Light en dark mode',
+        text: 'Elk scherm uitgewerkt in beide modi, zodat de thema’s in elke situatie even goed tot hun recht komen.',
+      },
+      {
+        title: 'Toegankelijk vanaf de eerste schets',
+        text: 'Toegankelijkheid (A11Y) was een vaste stap in het ontwerpproces, geen controle achteraf.',
+      },
+    ],
+    images: [
+      { src: '/img/cases/surprisepay-1.webp', alt: 'Raster van SurprisePay-schermen met verschillende thema’s', wide: true, w: 1920, h: 1080 },
+      { src: '/img/cases/surprisepay-2.webp', alt: 'Drie SurprisePay-schermen met het thema “Proficiat met jullie huwelijk”', wide: true, w: 1920, h: 1080 },
+    ],
+  },
+  {
+    slug: 'nwsnwsnws',
+    title: 'Reportages voor nwsnwsnws',
+    client: 'VRT',
+    sector: 'Media, nieuws voor jongeren',
+    location: 'YouTube en sociale media',
+    year: 2026,
+    services: ['Grafiek', 'Motion design', 'Infographics', 'Thumbnails'],
+    quote: 'Grafiek en beweging die de reportage helpen vertellen.',
+    metaDescription:
+      'Grafiek en motion design voor nwsnwsnws, het jongerenmerk van VRT NWS: titels, infographics, animaties en thumbnails voor reportages op YouTube en sociale media.',
+    intro: [
+      'nwsnwsnws is het merk van VRT NWS voor jongeren op YouTube en sociale media.',
+      'Voor hun reportages werkt Yasin de volledige grafiek en het motion design uit, van titels en infographics tot alle animaties. Ook de thumbnails zijn van zijn hand. Hieronder vier reportages.',
+    ],
+    highlights: [
+      {
+        title: 'Grafiek die mee vertelt',
+        text: 'Titels en infographics die de reportage ondersteunen in plaats van ze te versieren.',
+      },
+      {
+        title: 'Alle animaties',
+        text: 'Elke beweging in beeld, van de openingstitel tot de laatste grafiek, in dezelfde stijl.',
+      },
+      {
+        title: 'Thumbnails die opvallen',
+        text: 'Op YouTube beslist de thumbnail of iemand klikt. Ook die zijn deel van het werk.',
+      },
+    ],
+    images: [
+      { src: '/img/cases/nws-1.webp', alt: 'Waarom zijn Franse scholieren zo boos?', w: 1280, h: 720, href: 'https://www.youtube.com/watch?v=xoaCDx75daA' },
+      { src: '/img/cases/nws-2.webp', alt: 'Waarom Trump en Poetin plots besties zijn', w: 1280, h: 720, href: 'https://www.youtube.com/watch?v=KVsM6srypoU' },
+      { src: '/img/cases/nws-3.webp', alt: 'Kan TikTok de zaak Lindsay Clancy oplossen?', w: 1280, h: 720, href: 'https://www.youtube.com/watch?v=R65dL-j_WG0' },
+      { src: '/img/cases/nws-4.webp', alt: 'Krijgen we te veel seksuele opvoeding op school?', w: 1280, h: 720, href: 'https://www.youtube.com/watch?v=l_CisTtJz_8' },
+    ],
+  },
+  {
+    slug: 'torfs-website',
+    title: 'Torfs website',
+    client: 'Torfs',
+    sector: 'Retail, schoenen',
+    location: 'België',
+    year: 2023,
+    services: ['Informatiearchitectuur', 'UX', 'UI design'],
+    quote: 'Hun warme, menselijke service vertaald naar een digitale ervaring waarin eenvoud, overzicht en merkbeleving centraal staan.',
+    metaDescription:
+      'Een nieuwe website voor Torfs, Belgische schoenenretailer: herwerkte informatiearchitectuur en flows om producten sneller te vinden, en een warme, consistente UI voor desktop en mobiel.',
+    intro: [
+      'Torfs is een Belgische schoenenretailer met een sterke focus op service, vertrouwen en beleving.',
+      'Als UX/UI designer stak Yasin de website in een nieuw jasje. Hij herwerkte de informatiearchitectuur en de user flows om producten sneller vindbaar te maken en keuzestress te verminderen, en vertaalde de warme merkidentiteit naar een moderne, consistente UI voor desktop en mobiel.',
+    ],
+    highlights: [
+      {
+        title: 'Sneller het juiste paar',
+        text: 'Een herwerkte informatiearchitectuur en nieuwe flows, zodat producten sneller vindbaar zijn.',
+      },
+      {
+        title: 'Minder keuzestress',
+        text: 'Overzicht in een groot aanbod, zonder de bezoeker te overspoelen.',
+      },
+      {
+        title: 'Het merk, ook online',
+        text: 'De warme identiteit van Torfs vertaald naar een moderne UI die op desktop en mobiel hetzelfde aanvoelt.',
+      },
+    ],
+    images: [],
+  },
+  {
+    slug: 'ai-image-generation',
+    title: 'AI Image generation',
+    client: 'KBC Bank & Verzekeringen',
+    sector: 'Bank en verzekeringen',
+    location: 'KBC Mobile, België',
+    year: 2025,
+    services: ['UI design', 'AI', 'Motion design'],
+    quote: 'Personalisatie wordt pas waardevol wanneer ze intuïtief, veilig en moeiteloos aanvoelt.',
+    metaDescription:
+      'AI Image Generation in KBC Mobile: klanten maken met AI een eigen beeld voor hun profielfoto, bankkaart of rekening. Flow, interface en motion design.',
+    intro: [
+      'AI Image Generation in KBC Mobile is een personalisatiefunctie waarmee klanten hun profielfoto, bankkaart en rekeningafbeelding een eigen beeld geven, vertrekkend van een bestaande foto of een prompt.',
+      'Als UI designer ontwierp Yasin de volledige flow en interface, met de focus op eenvoud, merkconsistentie en vertrouwen. Daarnaast verzorgde hij het motion design: subtiele animaties en vloeiende overgangen voor een speelse maar premium beleving.',
+    ],
+    highlights: [
+      {
+        title: 'AI die je vertrouwt',
+        text: 'Een bank en AI-beelden: de flow moest vooral veilig en voorspelbaar aanvoelen.',
+      },
+      {
+        title: 'Vanaf een foto of een prompt',
+        text: 'Twee vertrekpunten in één eenvoudige flow, voor profielfoto, bankkaart en rekening.',
+      },
+      {
+        title: 'Speels maar premium',
+        text: 'Subtiele animaties en vloeiende overgangen die het wachten op een beeld aangenaam maken.',
+      },
+    ],
+    images: [{ src: '/img/cases/ai-1.webp', alt: 'Flow om met AI een afbeelding voor je kaart of rekening te maken', wide: true, w: 1920, h: 1080 }],
+  },
+  {
+    slug: 'cyclis-bike-lease',
+    title: 'Cyclis Bike Lease',
+    client: 'Cyclis',
+    sector: 'Fietsleasing',
+    location: 'België',
+    year: 2023,
+    services: ['Designworkshops', 'UX', 'UI design', 'Illustratie', 'Motion design'],
+    quote: 'Een complex leasingecosysteem vertaald naar heldere, schaalbare digitale flows.',
+    metaDescription:
+      'Redesign van de website en het klantenplatform van Cyclis Bike Lease: van designworkshops en informatiearchitectuur tot UI, illustratie, motion en responsieve uitwerking.',
+    intro: [
+      'Cyclis is een toonaangevende speler in fietsleasing, met een complex digitaal ecosysteem voor werknemers, werkgevers, zelfstandigen en dealers.',
+      'Via designworkshops bracht Yasin samen met de stakeholders de belangrijkste pijnpunten in kaart. Dat vormde de basis voor een volledige redesign van de website en het klantenplatform: van wireframes, informatiearchitectuur en UX-flows tot UI-design, illustratie, motion design en de responsieve uitwerking.',
+    ],
+    highlights: [
+      {
+        title: 'Vier soorten gebruikers',
+        text: 'Werknemers, werkgevers, zelfstandigen en dealers, elk met een eigen weg door hetzelfde platform.',
+      },
+      {
+        title: 'Workshops als vertrekpunt',
+        text: 'De pijnpunten samen met de stakeholders in kaart gebracht, vóór er één scherm getekend werd.',
+      },
+      {
+        title: 'Van wireframe tot motion',
+        text: 'Informatiearchitectuur, flows, UI, illustraties en animaties uit één hand, responsief uitgewerkt.',
+      },
+    ],
+    images: [{ src: '/img/cases/cyclis-1.webp', alt: 'Schermen van de Cyclis-website en het klantenplatform', wide: true, w: 1920, h: 1080 }],
+  },
+  {
+    slug: 'myhome-en-mymobility',
+    title: 'MyHome & MyMobility',
+    client: 'KBC Bank & Verzekeringen',
+    sector: 'Bank en verzekeringen',
+    location: 'KBC Mobile, België',
+    year: 2024,
+    services: ['UI design', 'Motion design'],
+    quote: 'Wonen en mobiliteit zijn geen features, maar leefcontexten. Door die context als uitgangspunt te nemen, verhoog je adoptie en relevantie.',
+    metaDescription:
+      'MyHome en MyMobility in KBC Mobile: alles rond wonen en mobiliteit op één plek. UI en motion design voor thematische modules die nieuwe diensten makkelijker vindbaar maken.',
+    intro: [
+      'KBC Mobile introduceerde thematische modules om complexe diensten toegankelijker te maken. MyHome brengt alles rond wonen samen (renovaties, energie, verzekeringen), MyMobility alles rond mobiliteit (fiets, wagen, openbaar vervoer).',
+      'Door diensten rond een context te organiseren, werd ontdekken eenvoudiger, werden transacties korter en werd de drempel om nieuwe diensten te gebruiken lager.',
+    ],
+    highlights: [
+      {
+        title: 'Rond je leven, niet rond producten',
+        text: 'Diensten gegroepeerd rond wonen en mobiliteit, zoals mensen er zelf aan denken.',
+      },
+      {
+        title: 'Makkelijker ontdekken',
+        text: 'Wie iets zoekt rond zijn huis of zijn auto, vindt het op één plek.',
+      },
+      {
+        title: 'Kortere transacties',
+        text: 'Minder stappen en een lagere drempel om een nieuwe dienst uit te proberen.',
+      },
+    ],
+    images: [{ src: '/img/cases/myhome-1.webp', alt: 'Schermen van MyHome en MyMobility in KBC Mobile', wide: true, w: 1920, h: 1080 }],
+  },
+  {
+    slug: 'onder-het-oppervlak',
+    title: 'Onder het oppervlak',
+    client: 'Eigen concept',
+    sector: 'Parfum, fictieve campagne',
+    location: 'Eigen werk',
+    year: 2026,
+    services: ['Concept', 'Art direction', 'AI-video'],
+    quote: 'Een geur bestaat uit lagen die je nooit tegelijk ziet. Onder het oppervlak maakt zichtbaar wat je normaal enkel ruikt.',
+    metaDescription:
+      'Onder het oppervlak: een fictieve campagnevideo voor YSL Y, gemaakt met AI. Concept, art direction en een node-based workflow in Figma Weave met Gemini en Kling.',
+    intro: [
+      'Onder het oppervlak is een fictieve campagnevideo voor YSL Y, een eigen concept. Een camera duikt door de hals van de flacon, reist ononderbroken door de top-, hart- en basisnoten en zoomt uiteindelijk terug uit naar het moment van gebruik.',
+      'De video is opgebouwd in Figma Weave als node-based workflow met vastgelegde stijlvariabelen, zodat elk van de vijf shots dezelfde visuele taal spreekt. Beelden zijn gegenereerd met Gemini 3 (Nano Banana Pro), de video met Kling 3, afgewerkt met een geluidsontwerp op maat.',
+    ],
+    highlights: [
+      {
+        title: 'Eén ononderbroken shot',
+        text: 'Van de flacon door de top-, hart- en basisnoten en terug naar het moment van gebruik.',
+      },
+      {
+        title: 'Een vaste stijl over vijf shots',
+        text: 'Vastgelegde stijlvariabelen in de workflow, zodat elk shot dezelfde visuele taal spreekt.',
+      },
+      {
+        title: 'AI als gereedschap',
+        text: 'Beelden met Gemini, video met Kling en geluid op maat, samengebracht in één node-based workflow.',
+      },
+    ],
+    images: [
+      { src: '/img/cases/onder-1.webp', alt: 'Overzicht van de node-based workflow in Figma Weave', wide: true, w: 1920, h: 772 },
+      { src: '/img/cases/onder-2.webp', alt: 'Moodboard met citrus- en parfumbeelden als stijlreferentie', w: 1605, h: 1149 },
+      { src: '/img/cases/onder-6.webp', alt: 'Laatste shots en overgangen in de workflow', w: 1920, h: 1086 },
+      { src: '/img/cases/onder-3.webp', alt: 'Vastgelegde stijlvariabelen in Figma Weave', w: 1558, h: 661 },
+      { src: '/img/cases/onder-4.webp', alt: 'Nodes voor het slotbeeld en de video-export', w: 1578, h: 554 },
+      { src: '/img/cases/onder-5.webp', alt: 'Shots van de top- en hartnoten, gegenereerd vanuit prompts', wide: true, w: 1920, h: 867 },
     ],
   },
 ];
