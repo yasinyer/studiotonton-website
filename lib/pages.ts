@@ -62,28 +62,34 @@ export const servicePages: ServicePage[] = [
   {
     key: 'branding',
     slug: 'logo-en-huisstijl-limburg',
-    metaTitle: 'Logo en huisstijl laten maken in Limburg',
+    metaTitle: 'Logo, huisstijl en drukwerk laten maken in Limburg',
     metaDescription:
-      'Een logo, kleuren en typografie die samen kloppen. studio tonton ontwerpt huisstijlen voor ondernemers in Hasselt en Limburg, met een merkgids en alle bestanden. Vanaf €1.250.',
-    h1: 'Een logo en huisstijl die bij je zaak passen.',
+      'Logo, huisstijl en drukwerk voor ondernemers in Hasselt en Limburg: brochures, affiches, werfborden, beachflags, autobestickering en illustraties. Huisstijl vanaf €1.250, drukwerk vanaf €450.',
+    h1: 'Een logo, huisstijl en drukwerk die bij je zaak passen.',
     lead:
-      'Mensen beslissen in een paar seconden of ze je vertrouwen. Een sterke huisstijl zorgt dat je er professioneel uitziet, overal: op je gevel, je website, je bestelwagen en je Instagram.',
+      'Mensen beslissen in een paar seconden of ze je vertrouwen. Een sterke huisstijl zorgt dat je er professioneel uitziet, overal: op je gevel, je website, je bestelwagen, je werfbord en je Instagram.',
     body: [
       'Een huisstijl is meer dan een logo. Het zijn de kleuren, lettertypes en beelden die samen één herkenbaar geheel vormen. We vertrekken van wie je bent en wie je klanten zijn, en vertalen dat naar een merk dat klopt.',
       'Heb je al een logo waar je aan gehecht bent? Dan bouwen we daarop verder, zoals bij Shanti Beans, waar er enkel een logo was en we er een volledige online identiteit rond maakten.',
-      'Je krijgt alles wat je nodig hebt: het logo in alle formaten, een merkgids met kleuren en typografie, en templates voor social media en drukwerk. Zo blijft je merk consistent, ook als iemand anders iets maakt.',
+      'Je krijgt alles wat je nodig hebt: het logo in alle formaten en een merkgids met kleuren en typografie. Zo blijft je merk consistent, ook als iemand anders iets maakt.',
+      'Ook voor drukwerk en signalisatie kan je bij ons terecht: van een omkeerbrochure, flyers en affiches tot een werfbord, een beachflag of de bestickering van je bestelwagen. Waar je merk erom vraagt, tekenen we er eigen illustraties bij. Je krijgt drukklare bestanden voor je drukker.',
     ],
     forWho: [
       'Je start een nieuwe zaak en wilt meteen professioneel overkomen.',
       'Je logo is verouderd of past niet meer bij wat je nu doet.',
       'Je merk ziet er op elk kanaal anders uit.',
       'Je wilt een merk dat opvalt tussen de concurrenten in je buurt.',
+      'Je hebt een brochure, affiche, werfbord of autobestickering nodig die bij je merk past.',
     ],
     cases: ['egy-cleaning', 'shanti-beans'],
     faq: [
       {
         q: 'Wat kost een logo en huisstijl?',
         a: 'Een volledige huisstijl start vanaf €1.250 excl. btw. Daarin zitten het logo, kleuren, typografie en een merkgids. Extra’s zoals drukwerk of een uitgebreide set social-templates bespreken we vooraf.',
+      },
+      {
+        q: 'Kan ik ook enkel drukwerk laten ontwerpen?',
+        a: 'Ja. Een brochure, affiche, flyer, werfbord, beachflag of autobestickering kan ook los, vanaf €450 excl. btw. Heb je al een huisstijl, dan werken we daarmee verder. Je krijgt drukklare bestanden voor je drukker.',
       },
       {
         q: 'Hoeveel voorstellen krijg ik?',

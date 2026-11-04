@@ -53,7 +53,7 @@ const jsonLd = {
   areaServed: ['Hasselt', 'Limburg', 'Vlaanderen', 'Brussel'],
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.region, addressCountry: 'BE' },
   priceRange: '€€',
-  knowsAbout: ['Webdesign', 'Branding', 'Motion design', 'UX/UI design', 'AI-automatisatie'],
+  knowsAbout: ['Webdesign', 'Branding', 'Grafisch ontwerp', 'Drukwerk', 'Illustratie', 'Motion design', 'UX/UI design', 'AI-automatisatie'],
   founder: { '@type': 'Person', name: owner.name, jobTitle: owner.role, url: owner.url },
   image: `${site.url}${owner.photo}`,
 };

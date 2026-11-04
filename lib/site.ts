@@ -50,13 +50,15 @@ export const services: Service[] = [
     key: 'branding',
     title: 'Branding & huisstijl',
     pitch:
-      'Een logo, kleuren en typografie die samen kloppen, en een merk dat doorloopt van je gevel tot je Instagram.',
+      'Een logo, kleuren en typografie die samen kloppen, en een merk dat doorloopt van je gevel tot je Instagram. Ook voor drukwerk, signalisatie en illustratie: los of bovenop je huisstijl.',
     from: 1250,
     includes: [
       'Logo en beeldmerk',
-      'Kleuren en typografie',
-      'Merkgids met alle bestanden',
-      'Templates voor social en drukwerk',
+      'Kleuren, typografie en merkgids',
+      'Brochures, flyers en affiches',
+      'Werfborden, beachflags en autobestickering',
+      'Illustraties op maat',
+      'Los drukwerk vanaf €450',
     ],
     examples: ['EGY Cleaning', 'Shanti Beans'],
   },
@@ -319,7 +321,7 @@ export const faq = [
 export const quote = {
   services: [
     { key: 'website', label: 'Website' },
-    { key: 'branding', label: 'Logo & huisstijl' },
+    { key: 'branding', label: 'Logo, huisstijl & drukwerk' },
     { key: 'motion', label: 'Video & animatie' },
     { key: 'ai', label: 'AI & automatisatie' },
     { key: 'app', label: 'App of digitaal product' },
