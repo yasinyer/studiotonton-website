@@ -243,7 +243,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .quick a:hover { background: #ededeb; color: #161616; border-color: #ededeb; }
 .foot__bottom {
-  border-top: 1px solid #2c2c2c; padding-block: 28px 120px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 32px;
+  border-top: 1px solid #2c2c2c; padding-block: 28px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px 32px;
   font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: #a1a1a1;
 }
 .foot__bottom a:hover { color: #ededeb; }
@@ -444,7 +444,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .sthead__logo { width: clamp(260px, 46vw, 680px); color: var(--ink-950); line-height: 0; margin: 0; }
 .sthead__logo .tt-logo { width: 100%; }
 .sthead__row { display: flex; flex-direction: column; align-items: flex-start; gap: 24px; }
-.sthead__lead { font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.02em; line-height: 1.25; max-width: 30ch; text-wrap: pretty; }
+.sthead__lead { font-size: clamp(20px, 2vw, 28px); letter-spacing: -0.02em; line-height: 1.25; max-width: 52ch; text-wrap: pretty; }
 .sthead__cta { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
 .sthead__cta .avail { flex-basis: 100%; margin-top: 6px; }
 .badge { position: relative; display: grid; place-items: center; width: 168px; aspect-ratio: 1; flex-shrink: 0; color: var(--ink-950); }
@@ -606,3 +606,78 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 .quick .wa { gap: 8px; border-color: #1fa35c; }
 .quick .wa svg { width: 16px; height: 16px; color: #1fa35c; }
 .quick .wa:hover svg { color: #161616; }
+
+/* WhatsApp-groen bij hover */
+.chipbtn.wa:hover,
+.quick .wa:hover { background: #25d366; border-color: #25d366; color: #0b1f12; }
+.quick .wa:hover svg { color: #0b1f12; }
+
+/* Tertiaire knop: geen vulling, onderlijnd bij hover */
+.tlink {
+  display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 10px;
+  color: var(--ink-950); font-size: 0.9375rem; white-space: nowrap;
+  text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 5px; text-decoration-thickness: 1.5px;
+  transition: text-decoration-color var(--dur-fast) var(--ease-out);
+}
+.tlink:hover, .tlink:focus-visible { text-decoration-color: currentColor; }
+.tlink--lg { height: 56px; font-size: 1.0625rem; }
+
+/* Logoband: trager, stopt bij hover; logo's krijgen dan hun eigen kleur */
+.clients .marq__track { animation-duration: 90s; }
+.clients .marq-clip:hover .marq__track { animation-play-state: paused; }
+:root[data-theme='dark'] .mlogo:hover .mlogo__img { filter: none; mix-blend-mode: normal; opacity: 1; }
+
+/* Werkcarrousel: trager en stopt bij hover */
+.strip .marq__track--slow { animation-duration: 140s; }
+.strip__clip:hover .marq__track { animation-play-state: paused; }
+
+/* Achter studio tonton: bredere tekst, knop helemaal rechts op desktop */
+@media (min-width: 900px) {
+  .stme__text { flex: 1; display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 48px; row-gap: 14px; align-items: center; }
+  .stme__text .label, .stme__p { grid-column: 1; }
+  .stme__text .chipbtn { grid-column: 2; grid-row: 1 / span 2; justify-self: end; }
+  .stme__p { max-width: 64ch; }
+}
+
+/* Reviews wisselen automatisch: de rand van de volgende-knop loopt vol (pauze bij hover/focus) */
+.slider__btn--next { position: relative; }
+.slider__prog { position: absolute; inset: -1px; width: calc(100% + 2px); height: calc(100% + 2px); overflow: visible; pointer-events: none; }
+.slider__prog rect {
+  fill: none; stroke: var(--ink-950); stroke-width: 1.5; stroke-dasharray: 100; stroke-dashoffset: 100;
+  animation: tt-fill 8s linear forwards;
+}
+.reviews.is-held .slider__prog rect { animation-play-state: paused; }
+@keyframes tt-fill { to { stroke-dashoffset: 0; } }
+@media (prefers-reduced-motion: reduce) { .slider__prog { display: none; } }
+
+/* Uitklappen diensten en FAQ: vloeiend open- en dichtschuiven */
+.svl__panel { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.55s var(--ease-out); }
+.svl__row.is-on .svl__panel { grid-template-rows: 1fr; }
+.svl__panel > .svl__body { min-height: 0; overflow: hidden; animation: none; opacity: 0; transition: opacity 0.4s var(--ease-out); }
+.svl__row.is-on .svl__panel > .svl__body { opacity: 1; transition-delay: 0.08s; }
+.faq { interpolate-size: allow-keywords; }
+.faq details::details-content {
+  block-size: 0; overflow: hidden;
+  transition: block-size 0.5s var(--ease-out), content-visibility 0.5s allow-discrete;
+}
+.faq details[open]::details-content { block-size: auto; }
+@media (prefers-reduced-motion: reduce) {
+  .svl__panel, .svl__panel > .svl__body, .faq details::details-content { transition: none; }
+}
+.svl__panel > .svl__body { padding-bottom: 0; }
+.svl__panel .svl__foot { margin-bottom: 32px; }
+
+/* Link naar Google-reviews onder de reviews */
+.gr-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 20px; color: var(--ink-600); transition: color var(--dur-fast) var(--ease-out); }
+.gr-link:hover { color: var(--ink-950); }
+
+/* Casepagina: volgende case en "Jouw project" onder elkaar */
+.nextcase .label { margin: 0; }
+.nextcase .ccards { grid-template-columns: 1fr; }
+@media (min-width: 900px) {
+  .nextcase .ccard { display: grid; grid-template-columns: 1.6fr 1fr; align-items: end; gap: 40px; }
+  .nextcase .ccard__meta { flex-direction: column; gap: 20px; }
+  .nextcase .ccard__t { font-size: clamp(28px, 3vw, 40px); }
+}
+.casecta { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 28px 48px; }
+.casecta__text { display: flex; flex-direction: column; gap: 16px; max-width: 60ch; }

@@ -82,7 +82,8 @@ export function ServiceList({ items }: { items: SvcItem[] }) {
                   <span className="svl__plus" aria-hidden="true" />
                 </button>
               </h3>
-              <div id={`svc-${s.key}`} className="svl__body" role="region" aria-label={s.title} hidden={!on}>
+              <div id={`svc-${s.key}`} className="svl__panel" role="region" aria-label={s.title} inert={!on}>
+              <div className="svl__body">
                 <p className="svl__d">{s.pitch}</p>
                 <ul className="svl__list">
                   {s.includes.map((x) => (
@@ -137,6 +138,7 @@ export function ServiceList({ items }: { items: SvcItem[] }) {
                     )}
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           );
@@ -205,14 +207,21 @@ export function WorkStrip({ items }: { items: { title: string; client: string; i
 /* ───────── Reviews-slider ───────── */
 export function Reviews({ items, moreHref }: { items: { quote: string; name: string; role: string; avatar?: string }[]; moreHref?: string }) {
   const [i, setI] = useState(0);
+  const [hold, setHold] = useState(false);
   const t = items[i];
-  const go = (d: number) => {
-    setI((i + d + items.length) % items.length);
-    track('review_slide');
+  const go = (d: number, auto = false) => {
+    setI((cur) => (cur + d + items.length) % items.length);
+    if (!auto) track('review_slide');
   };
   return (
-    <div className="reviews">
-      <figure className="tcard" aria-live="polite">
+    <div
+      className={`reviews${hold ? ' is-held' : ''}`}
+      onMouseEnter={() => setHold(true)}
+      onMouseLeave={() => setHold(false)}
+      onFocus={() => setHold(true)}
+      onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node) && setHold(false)}
+    >
+      <figure className="tcard" aria-live={hold ? 'polite' : 'off'}>
         <blockquote>“{t.quote}”</blockquote>
         <figcaption>
           {t.avatar && <Image src={t.avatar} alt="" width={44} height={44} />}
@@ -228,8 +237,12 @@ export function Reviews({ items, moreHref }: { items: { quote: string; name: str
             <button type="button" className="slider__btn" onClick={() => go(-1)} aria-label="Vorige review">
               <ArrowLeft />
             </button>
-            <button type="button" className="slider__btn" onClick={() => go(1)} aria-label="Volgende review">
+            <button type="button" className="slider__btn slider__btn--next" onClick={() => go(1)} aria-label="Volgende review">
               <Arrow className="" />
+              {/* Rand die volloopt; als hij vol is, schuift de volgende review in (zoals op yasinyer.be) */}
+              <svg key={i} className="slider__prog" viewBox="0 0 50 50" aria-hidden="true">
+                <rect x="1" y="1" width="48" height="48" rx="14" pathLength="100" onAnimationEnd={() => go(1, true)} />
+              </svg>
             </button>
             <span className="label label--soft slider__n">
               {String(i + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}

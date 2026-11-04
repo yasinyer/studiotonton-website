@@ -142,29 +142,30 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           </section>
         )}
 
+        {next.slug !== study.slug && (
+          <section className="section nextcase" aria-labelledby="next-case-title">
+            <div className="wrap">
+              <h2 id="next-case-title" className="label">
+                Volgende case
+              </h2>
+              <div style={{ marginTop: 20 }}>
+                <CaseCards refs={[next.slug]} />
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="section" style={{ background: 'var(--surface-sunk)' }}>
-          <div className="wrap">
-          <div className="band" style={{ background: 'transparent', padding: 0 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="wrap casecta">
+            <div className="casecta__text">
               <span className="label">Jouw project</span>
               <h2 className="t-h2">Ook zo’n project voor jouw zaak?</h2>
               <p className="t-body">Vertel in 2 minuten wat je zoekt. Je krijgt {site.responseTime} een antwoord, met een vaste prijs.</p>
-              <div>
-                <Link href="/offerte" className="btn btn--lg" data-cta={`case-${study.slug}`}>
-                  Vraag je gratis offerte
-                  <Arrow />
-                </Link>
-              </div>
             </div>
-            {next.slug !== study.slug && (
-              <div>
-                <span className="label">Volgende case</span>
-                <div style={{ marginTop: 14 }}>
-                  <CaseCards refs={[next.slug]} />
-                </div>
-              </div>
-            )}
-          </div>
+            <Link href="/offerte" className="btn btn--lg" data-cta={`case-${study.slug}`}>
+              Vraag je gratis offerte aan
+              <Arrow />
+            </Link>
           </div>
         </section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />
