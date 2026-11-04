@@ -9,6 +9,7 @@ export const site = {
   url: 'https://www.studiotonton.be',
   email: 'hallo@studiotonton.be',
   phone: '', // bv. '+32 470 00 00 00' — leeg = verborgen
+  whatsapp: '32493832540', // nummer voor de WhatsApp-knop, met landcode, zonder + of spaties — leeg = verborgen
   city: 'Hasselt',
   region: 'Limburg',
   instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen

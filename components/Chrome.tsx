@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Logo } from './Logo';
+import { WhatsAppButton } from './WhatsApp';
 import { ArrowDiag } from './Icons';
 import { quote, services, site } from '@/lib/site';
 import { caseStudies, servicePageFor } from '@/lib/pages';
@@ -43,6 +44,7 @@ export function Footer() {
                   {s.label}
                 </Link>
               ))}
+            <WhatsAppButton location="footer" className="" label="Of stuur een WhatsApp" />
           </div>
         </div>
         <nav className="foot__nav" aria-label="Footer">

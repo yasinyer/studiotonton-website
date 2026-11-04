@@ -4,6 +4,7 @@ import { Footer } from '@/components/Chrome';
 import { ClientBand, Reviews, ServiceList, WorkStrip, type SvcItem } from '@/components/Home';
 import { Arrow, ArrowDiag, Plus } from '@/components/Icons';
 import { Logo } from '@/components/Logo';
+import { WhatsAppButton } from '@/components/WhatsApp';
 import { Reveal } from '@/components/Reveal';
 import { caseStudyFor, servicePageFor } from '@/lib/pages';
 import { cases, clients, euro, faq, modes, owner, services, site, stats, steps, testimonials } from '@/lib/site';
@@ -80,6 +81,7 @@ export default function Home() {
                 Vraag je gratis offerte
                 <Arrow />
               </Link>
+              <WhatsAppButton location="hero" className="chipbtn chipbtn--lg" />
               <Link href="#werk" className="chipbtn chipbtn--lg">
                 Bekijk werk
               </Link>

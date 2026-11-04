@@ -42,6 +42,11 @@ export default function Privacy() {
               Voor het versturen van e-mails en het hosten van deze website gebruiken we betrouwbare partners (zoals Vercel, Resend en
               PostHog) die je gegevens enkel in onze opdracht verwerken.
             </p>
+            <h2>WhatsApp</h2>
+            <p>
+              Neem je contact op via WhatsApp, dan verloopt dat gesprek via WhatsApp (Meta) en gelden ook hun voorwaarden. We
+              gebruiken je bericht en nummer enkel om je vraag te beantwoorden.
+            </p>
             <h2>Statistieken</h2>
             <p>
               Om de website te verbeteren meten we anoniem hoe ze gebruikt wordt, bijvoorbeeld welke pagina’s bezocht worden en

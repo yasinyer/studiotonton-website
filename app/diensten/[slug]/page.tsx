@@ -5,6 +5,7 @@ import { Footer, Header } from '@/components/Chrome';
 import { CaseCards } from '@/components/CaseCards';
 import { Arrow, Check, Plus } from '@/components/Icons';
 import { Reveal } from '@/components/Reveal';
+import { WhatsAppButton } from '@/components/WhatsApp';
 import { servicePages } from '@/lib/pages';
 import { euro, services, site, steps } from '@/lib/site';
 
@@ -85,9 +86,11 @@ export default async function DienstPage({ params }: { params: Promise<{ slug: s
                     Vraag je gratis offerte
                     <Arrow />
                   </Link>
-                  <Link href="#werk" className="btn btn--lg btn--ghost">
-                    Bekijk voorbeelden
-                  </Link>
+                  <WhatsAppButton
+                    location={`dienst-${service.key}`}
+                    className="chipbtn chipbtn--lg"
+                    message={`Hallo studio tonton, ik heb interesse in ${service.title.toLowerCase()}. `}
+                  />
                 </div>
                 <ul className="trust">
                   <li>

@@ -600,3 +600,9 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 
 .foot__brand { display: flex; align-items: center; gap: 18px; text-transform: none; letter-spacing: 0; font-size: 0.9375rem; color: #c7c7c7; }
 .foot__big { padding-bottom: 0.14em; }
+
+/* WhatsApp-knop */
+.wa svg { width: 18px; height: 18px; flex-shrink: 0; }
+.quick .wa { gap: 8px; border-color: #1fa35c; }
+.quick .wa svg { width: 16px; height: 16px; color: #1fa35c; }
+.quick .wa:hover svg { color: #161616; }

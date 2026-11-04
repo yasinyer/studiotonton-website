@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Header } from '@/components/Chrome';
 import { Check } from '@/components/Icons';
 import { QuoteForm } from '@/components/QuoteForm';
+import { WhatsAppButton } from '@/components/WhatsApp';
 import { quote, site } from '@/lib/site';
 
 export const metadata: Metadata = {
@@ -50,7 +51,13 @@ export default async function Offerte({ searchParams }: { searchParams: Promise<
                 </ul>
               </div>
               <div className="qside__block">
-                <span className="label label--soft">Liever meteen mailen?</span>
+                <span className="label label--soft">Liever geen formulier?</span>
+                <div>
+                  <WhatsAppButton location="offerte" label="Stuur ons een WhatsApp" />
+                </div>
+                <span className="label label--soft" style={{ marginTop: 12 }}>
+                  Of mail ons
+                </span>
                 <a className="mail" href={`mailto:${site.email}`}>
                   {site.email}
                 </a>
