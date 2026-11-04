@@ -33,7 +33,11 @@ export function Dock() {
     if (pathname !== '/') return setActive(null);
     const els = links.map((l) => document.getElementById(l.id)).filter(Boolean) as HTMLElement[];
     const io = new IntersectionObserver(
-      (entries) => entries.forEach((e) => e.isIntersecting && setActive(e.target.id)),
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) setActive(e.target.id);
+          else setActive((cur) => (cur === e.target.id ? null : cur));
+        }),
       { rootMargin: '-45% 0px -50% 0px' },
     );
     els.forEach((el) => io.observe(el));

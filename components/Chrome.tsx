@@ -89,7 +89,10 @@ export function Footer() {
         </nav>
         <div className="foot__bottom">
           <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-            <Logo />
+            <div className="foot__brand">
+              <Logo />
+              <span>Designstudio uit {site.city}. Websites, branding, motion en AI.</span>
+            </div>
             <div className="foot__links">
               <a href={`mailto:${site.email}`}>{site.email}</a>
               {site.phone && <a href={`tel:${site.phone.replace(/\s/g, '')}`}>{site.phone}</a>}

@@ -198,22 +198,26 @@ export const cases: Case[] = [
   },
 ];
 
-export const clients: { name: string; src: string; w?: number }[] = [
+export const clients: { name: string; src: string }[] = [
   { name: 'KBC', src: '/img/logos/kbc.png' },
   { name: 'VRT NWS', src: '/img/logos/vrt-nws.webp' },
   { name: 'nwsnwsnws', src: '/img/logos/nwsnwsnws.png' },
+  { name: 'Nitra', src: '/img/logos/nitra.svg' },
+  { name: 'Torfs', src: '/img/logos/torfs.png' },
+  { name: 'Cyclis', src: '/img/logos/cyclis.png' },
   { name: 'EGY Cleaning', src: '/img/logos/egycleaning.png' },
   { name: 'Shanti Beans', src: '/img/logos/shantibeans.png' },
+  { name: 'Appfoundry', src: '/img/logos/appfoundry.webp' },
+  { name: 'Springbok Agency', src: '/img/logos/springbok.png' },
   { name: 'De Serre Hasselt', src: '/img/logos/deserre.png' },
+  { name: 'Open Summer of Code', src: '/img/logos/osoc.svg' },
 ];
 
-export const clientNames = ['Torfs', 'Cyclis', 'Nitra', 'Appfoundry', 'Springbok Agency', 'Open Summer of Code'];
-
 export const stats = [
-  { n: '3×', label: 'Best Banking App in the World, mee ontworpen aan KBC Mobile' },
+  { n: '3', suf: '×', label: 'Keer Best Banking App in the World, met KBC Mobile' },
   { n: '11', label: 'Cases, van bank tot koffiebar' },
+  { n: '4', suf: '+', label: 'Jaar ervaring als UI designer, in teams en freelance' },
   { n: '1', label: 'Aanspreekpunt, van eerste schets tot oplevering' },
-  { n: '24u', label: 'Je hoort van ons binnen 1 werkdag' },
 ];
 
 export const steps = [
@@ -222,35 +226,41 @@ export const steps = [
     text: 'Een vrijblijvend gesprek, bij jou in de zaak, bij ons of online. Jij vertelt wat je nodig hebt, wij stellen vragen tot het helder is.',
   },
   {
-    title: 'Voorstel met vaste prijs',
-    text: 'Je krijgt een voorstel met aanpak, planning en een vaste prijs. Geen verrassingen achteraf.',
+    title: 'Voorstel',
+    text: 'Je krijgt een voorstel met aanpak, planning en een vaste prijs, zodat je weet waar je aan toe bent.',
   },
   {
     title: 'Ontwerp en bouw',
-    text: 'Korte rondes met feedback tussendoor. Je ziet het werk groeien, niet alleen het eindresultaat.',
+    text: 'Korte rondes, met feedback tussendoor. Je ziet het werk groeien, niet alleen het eindresultaat.',
   },
   {
-    title: 'Live en verder',
-    text: 'We zetten alles live, leggen uit hoe je zelf aanpassingen doet en blijven bereikbaar als je ons nodig hebt.',
+    title: 'Oplevering',
+    text: 'Alles wat je nodig hebt: een live website, ontwerpbestanden, assets of video, en uitleg zodat je zelf verder kan.',
   },
 ];
 
-export const reasons = [
+/** "Achter studio tonton": het gezicht van de studio. */
+export const owner = {
+  name: 'Yasin Yer',
+  role: 'UX/UI-, motion- en AI-designer',
+  photo: '/img/portret.webp',
+  url: 'https://yasinyer.be',
+  recommendations: 'https://www.linkedin.com/in/yasinyer/details/recommendations/', // leeg = verborgen
+};
+
+/** Samenwerkingsvormen. */
+export const modes = [
   {
-    title: 'Eén aanspreekpunt',
-    text: 'Geen doorgeefluik of accountmanager. Je praat rechtstreeks met wie ontwerpt en bouwt.',
+    title: 'Project',
+    text: 'Een afgebakende vraag met een duidelijke planning en een vaste prijs. Bijvoorbeeld een website, een huisstijl of een reeks video’s.',
   },
   {
-    title: 'Vaste prijs vooraf',
-    text: 'Je weet vooraf wat het kost. Betalen gebeurt in schijven, gekoppeld aan duidelijke stappen.',
+    title: 'Doorlopend',
+    text: 'Een vaste designpartner voor je zaak of team, een paar dagen per week of per maand, voor een merk of product dat blijft groeien.',
   },
   {
-    title: 'Ervaring van de grote merken',
-    text: 'Dezelfde aanpak als voor KBC en VRT, op maat van jouw zaak en jouw budget.',
-  },
-  {
-    title: 'Jij blijft eigenaar',
-    text: 'Je domein, je bestanden, je website: alles staat op jouw naam. Geen lock-in.',
+    title: 'Waar',
+    text: 'Vanuit Hasselt, voor ondernemers in heel Limburg en Vlaanderen, ter plaatse of online. Je werkt altijd rechtstreeks met Yasin.',
   },
 ];
 
@@ -261,10 +271,17 @@ export const reasons = [
 export const testimonials: { quote: string; name: string; role: string; avatar?: string }[] = [
   {
     quote:
-      '…not only delivered excellent visual design work for the more “traditional” projects like the KBC Mobile app but also successfully took on more “creative” assignments thanks to his illustration and animation skills.',
+      'Yasin is a young, dynamic and creative designer who not only delivered excellent visual design work for the more “traditional” projects like the KBC Mobile app but also successfully took on more “creative” assignments thanks to his illustration and animation skills. I am confident that Yasin has a bright design career ahead of him.',
     name: 'Davy Rego',
-    role: 'Digital Customer Experience, KBC Bank & Verzekeringen',
+    role: 'Digital Customer Experience at KBC Bank & Verzekeringen',
     avatar: '/img/testimonial-davy.webp',
+  },
+  {
+    quote:
+      'Yasin is a talented all-round designer. He has a great eye for detail! Listens well to what the assignment is and comes up with a great concept that fits as a whole. When given a chance you’ll be surprised of what he delivers.',
+    name: 'Inti Valderas Caro',
+    role: 'User Experience designer at VRT MAX',
+    avatar: '/img/testimonial-inti.webp',
   },
 ];
 

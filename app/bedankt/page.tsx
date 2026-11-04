@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Chrome';
 import { Arrow } from '@/components/Icons';
-import { cases, site, steps } from '@/lib/site';
-import Image from 'next/image';
+import { CaseCards } from '@/components/CaseCards';
+import { caseStudies } from '@/lib/pages';
+import { site, steps } from '@/lib/site';
 
 export const metadata: Metadata = {
   title: 'Bedankt',
@@ -49,14 +50,11 @@ export default async function Bedankt({ searchParams }: { searchParams: Promise<
                   </li>
                 ))}
               </ol>
-              <div className="strip" style={{ marginTop: 24 }}>
-                {cases.slice(0, 3).map((c) => (
-                  <figure key={c.title}>
-                    <div className="ph">
-                      <Image src={c.image} alt={c.title} width={600} height={375} />
-                    </div>
-                  </figure>
-                ))}
+              <div style={{ marginTop: 32 }}>
+                <span className="label label--soft">Intussen even kijken?</span>
+                <div style={{ marginTop: 14 }}>
+                  <CaseCards refs={caseStudies.map((c) => c.slug)} />
+                </div>
               </div>
             </div>
           </div>

@@ -3,7 +3,7 @@ import { Hanken_Grotesk } from 'next/font/google';
 import './globals.css';
 import { Dock } from '@/components/Dock';
 import { Analytics } from '@/components/Analytics';
-import { site } from '@/lib/site';
+import { owner, site } from '@/lib/site';
 
 const hanken = Hanken_Grotesk({
   subsets: ['latin'],
@@ -54,6 +54,8 @@ const jsonLd = {
   address: { '@type': 'PostalAddress', addressLocality: site.city, addressRegion: site.region, addressCountry: 'BE' },
   priceRange: '€€',
   knowsAbout: ['Webdesign', 'Branding', 'Motion design', 'UX/UI design', 'AI-automatisatie'],
+  founder: { '@type': 'Person', name: owner.name, jobTitle: owner.role, url: owner.url },
+  image: `${site.url}${owner.photo}`,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

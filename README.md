@@ -21,7 +21,8 @@ npm run build    # productie-build
 
 ## Content aanpassen
 
-Alle teksten, **vanaf-prijzen**, cases, FAQ, contactgegevens en formulieropties staan in **`lib/site.ts`**.
+Alle teksten, **vanaf-prijzen**, cases, kerncijfers, reviews, het blok "Achter studio tonton" (`owner`), de
+samenwerkingsvormen (`modes`), FAQ, contactgegevens en formulieropties staan in **`lib/site.ts`**.
 
 ### Dienstpagina's en cases
 
