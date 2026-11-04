@@ -13,7 +13,7 @@ export const site = {
   city: 'Hasselt',
   region: 'Limburg',
   instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen
-  linkedin: '', // leeg = verborgen
+  linkedin: 'https://www.linkedin.com/company/studiotonton/', // leeg = verborgen
   responseTime: 'binnen 1 werkdag',
   googleReviewsUrl: 'https://g.page/r/CcG1MXsqgXKXEAE/review', // link naar je reviews op Google — leeg = verborgen
   description:

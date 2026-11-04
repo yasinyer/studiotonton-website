@@ -55,6 +55,7 @@ const jsonLd = {
   priceRange: '€€',
   knowsAbout: ['Webdesign', 'Branding', 'Grafisch ontwerp', 'Drukwerk', 'Illustratie', 'Motion design', 'UX/UI design', 'AI-automatisatie'],
   founder: { '@type': 'Person', name: owner.name, jobTitle: owner.role, url: owner.url },
+  sameAs: [site.linkedin, site.instagram].filter(Boolean),
   image: `${site.url}${owner.photo}`,
 };
 
