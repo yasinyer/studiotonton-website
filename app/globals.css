@@ -422,7 +422,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 /* ───────── homepage, naar yasinyer.be/studio-tonton ───────── */
 @keyframes tt-spin { to { transform: rotate(360deg); } }
 @keyframes tt-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
-@keyframes tt-marq { to { transform: translateX(-50%); } }
 
 .chipbtn {
   display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border-radius: 16px; corner-shape: superellipse(1.6);
@@ -483,22 +482,20 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   transition: background var(--dur-fast) var(--ease-out);
 }
 .band-pause:hover { background: rgba(var(--yy-ink), 0.1); }
-.marq-clip { overflow: hidden; }
-.marq__track { display: flex; width: max-content; animation: tt-marq 45s linear infinite; }
-.marq__track--slow { animation-duration: 80s; }
-.marq__track.is-paused { animation-play-state: paused; }
+.mq { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; }
+.mq::-webkit-scrollbar { display: none; }
+.mq.is-dragging { cursor: grabbing; user-select: none; }
+.mq.is-dragging a { pointer-events: none; }
+.mq__track { display: flex; width: max-content; }
 .marq__row { display: flex; align-items: center; gap: 64px; padding-right: 64px; }
 .mlogo { display: inline-flex; align-items: center; height: 56px; }
 .mlogo__img { height: 56px; width: auto; max-width: 140px; object-fit: contain; filter: grayscale(1) contrast(0.9); opacity: 0.6; transition: opacity var(--dur-fast), filter var(--dur-fast); }
 .mlogo:hover .mlogo__img { filter: none; opacity: 1; }
 :root[data-theme='dark'] .mlogo__img { filter: grayscale(1) invert(1) brightness(1.1); mix-blend-mode: screen; opacity: 0.7; }
 @media (min-width: 900px) { .marq__row { gap: 112px; padding-right: 112px; } }
+.marq__row.strip__row { align-items: flex-start; gap: 20px; padding-right: 20px; }
+.strip__foot { display: flex; justify-content: flex-end; padding-top: 16px; }
 .strip { padding-bottom: 72px; }
-.strip__scroll { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; }
-.strip__scroll::-webkit-scrollbar { display: none; }
-.strip__scroll.is-dragging { cursor: grabbing; user-select: none; }
-.strip__scroll.is-dragging a { pointer-events: none; }
-.strip__row { display: flex; align-items: flex-start; gap: 20px; width: max-content; padding-inline: var(--gx); }
 .strip__item { display: flex; flex-direction: column; gap: 12px; width: clamp(280px, 30vw, 480px); flex-shrink: 0; }
 .strip__item .frame { display: block; aspect-ratio: 16 / 10; }
 .strip__item img { transition: transform 0.6s var(--ease-out); }
@@ -603,7 +600,7 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
   .slider { flex-wrap: wrap; }
   .slider__more { margin-left: 0; flex-basis: 100%; margin-top: 8px; }
 }
-@media (prefers-reduced-motion: reduce) { .badge__ring, .marq__track { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .badge__ring { animation: none; } }
 
 .foot__brand { display: flex; align-items: center; gap: 18px; text-transform: none; letter-spacing: 0; font-size: 0.9375rem; color: #c7c7c7; }
 .foot__big { padding-bottom: 0.14em; }
@@ -630,8 +627,6 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 .tlink--lg { height: 56px; font-size: 1.0625rem; }
 
 /* Logoband: trager, stopt bij hover; logo's krijgen dan hun eigen kleur */
-.clients .marq__track { animation-duration: 90s; }
-.clients .marq-clip:hover .marq__track { animation-play-state: paused; }
 :root[data-theme='dark'] .mlogo:hover .mlogo__img { filter: none; mix-blend-mode: normal; opacity: 1; }
 
 /* Achter studio tonton: bredere tekst, knop helemaal rechts op desktop */
@@ -698,3 +693,16 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 .stme .chipbtn:hover { background: var(--surface-raised); box-shadow: 0 0 0 1px var(--border-strong); }
 :root[data-theme='dark'] .stme .chipbtn { background: rgba(var(--yy-ink), 0.08); }
 :root[data-theme='dark'] .stme .chipbtn:hover { background: rgba(var(--yy-ink), 0.14); box-shadow: none; }
+
+/* Reviews: alle reviews op elkaar, vloeiende overgang (uitfaden, dan invaden met een kleine beweging) */
+.tstack { display: grid; }
+.tslide {
+  grid-area: 1 / 1; display: flex; flex-direction: column; justify-content: space-between; gap: 28px; margin: 0;
+  opacity: 0; transform: translateY(10px); visibility: hidden; pointer-events: none;
+  transition: opacity 0.35s var(--ease-out), transform 0.35s var(--ease-out), visibility 0s linear 0.35s;
+}
+.tslide.is-on {
+  opacity: 1; transform: none; visibility: visible; pointer-events: auto;
+  transition: opacity 0.6s var(--ease-out) 0.2s, transform 0.8s var(--ease-out) 0.2s, visibility 0s linear 0s;
+}
+@media (prefers-reduced-motion: reduce) { .tslide, .tslide.is-on { transition: none; transform: none; } }

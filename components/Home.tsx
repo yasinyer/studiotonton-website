@@ -2,8 +2,9 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import { Arrow, ArrowDiag, ArrowLeft, Check } from './Icons';
+import { Marquee } from './Marquee';
 import { track } from '@/lib/track';
 
 /* ───────── Pauzeknop (gedeeld door logoband en werkstrook) ───────── */
@@ -31,7 +32,7 @@ export function ClientBand({ logos }: { logos: { name: string; src: string }[] }
     <div className="marq__row" aria-hidden={hidden || undefined}>
       {logos.map((l) => (
         <span key={l.name} className="mlogo" title={hidden ? undefined : l.name}>
-          <Image src={l.src} alt={hidden ? '' : l.name} width={120} height={40} loading="eager" className="mlogo__img" />
+          <Image src={l.src} alt={hidden ? '' : l.name} width={120} height={40} loading="eager" className="mlogo__img" draggable={false} />
         </span>
       ))}
     </div>
@@ -44,12 +45,7 @@ export function ClientBand({ logos }: { logos: { name: string; src: string }[] }
         </h2>
         <PauseButton paused={paused} onToggle={() => setPaused(!paused)} label="Logoband" />
       </div>
-      <div className="marq-clip">
-        <div className={`marq__track${paused ? ' is-paused' : ''}`}>
-          {row(false)}
-          {row(true)}
-        </div>
-      </div>
+      <Marquee row={row} duration={90} paused={paused} className="clients__mq" />
     </section>
   );
 }
@@ -155,135 +151,53 @@ export function ServiceList({ items }: { items: SvcItem[] }) {
   );
 }
 
-/* ───────── Geselecteerd werk als horizontale strook (zoals op yasinyer.be) ─────────
-   De strook schuift mee met het scrollen van de pagina. Je kunt ze ook zelf scrollen
-   (trackpad, touch) of met de muis slepen; daarna loopt ze vanaf die plek verder mee. */
+/* ───────── Geselecteerd werk als eindeloze strook die je ook zelf kunt scrollen ───────── */
 export function WorkStrip({ items }: { items: { title: string; client: string; image: string; logo?: string; href?: string }[] }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    let offset = 0; // verschuiving door de bezoeker zelf
-    let last = -1; // laatste positie die wij zelf zetten
-    let focused = false; // toetsenbordfocus in de strook: niet wegschuiven
-    let drag: { id: number; x: number; left: number; moved: boolean } | null = null;
-    let justDragged = false;
-
-    const max = () => el.scrollWidth - el.clientWidth;
-    const progress = () => {
-      const r = el.getBoundingClientRect();
-      return Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height)));
-    };
-    const follow = () => {
-      if (drag || focused || calm || max() <= 0) return;
-      const r = el.getBoundingClientRect();
-      if (r.bottom < 0 || r.top > innerHeight) return;
-      el.scrollLeft = Math.min(max(), Math.max(0, progress() * max() + offset));
-      last = el.scrollLeft;
-    };
-    const onOwnScroll = () => {
-      if (!drag && Math.abs(el.scrollLeft - last) >= 1) offset = el.scrollLeft - progress() * max();
-    };
-    const onFocusIn = () => (focused = true);
-    const onFocusOut = (e: FocusEvent) => {
-      if (!el.contains(e.relatedTarget as Node)) focused = false;
-    };
-    const onDown = (e: PointerEvent) => {
-      if (max() <= 0 || e.pointerType === 'touch' || e.button !== 0) return;
-      drag = { id: e.pointerId, x: e.clientX, left: el.scrollLeft, moved: false };
-    };
-    const onMove = (e: PointerEvent) => {
-      if (!drag) return;
-      if (!drag.moved) {
-        if (Math.abs(e.clientX - drag.x) < 4) return;
-        drag.moved = true;
-        el.setPointerCapture(drag.id);
-        el.classList.add('is-dragging');
-      }
-      el.scrollLeft = drag.left - (e.clientX - drag.x);
-    };
-    const onUp = () => {
-      if (!drag) return;
-      justDragged = drag.moved;
-      drag = null;
-      el.classList.remove('is-dragging');
-      offset = el.scrollLeft - progress() * max();
-    };
-    // Na slepen geen klik op de case eronder
-    const onClick = (e: MouseEvent) => {
-      if (justDragged) {
-        e.preventDefault();
-        e.stopPropagation();
-        justDragged = false;
-      }
-    };
-
-    window.addEventListener('scroll', follow, { passive: true });
-    window.addEventListener('resize', follow);
-    el.addEventListener('scroll', onOwnScroll, { passive: true });
-    el.addEventListener('focusin', onFocusIn);
-    el.addEventListener('focusout', onFocusOut);
-    el.addEventListener('pointerdown', onDown);
-    el.addEventListener('pointermove', onMove);
-    el.addEventListener('pointerup', onUp);
-    el.addEventListener('pointercancel', onUp);
-    el.addEventListener('click', onClick, true);
-    follow();
-    return () => {
-      window.removeEventListener('scroll', follow);
-      window.removeEventListener('resize', follow);
-      el.removeEventListener('scroll', onOwnScroll);
-      el.removeEventListener('focusin', onFocusIn);
-      el.removeEventListener('focusout', onFocusOut);
-      el.removeEventListener('pointerdown', onDown);
-      el.removeEventListener('pointermove', onMove);
-      el.removeEventListener('pointerup', onUp);
-      el.removeEventListener('pointercancel', onUp);
-      el.removeEventListener('click', onClick, true);
-    };
-  }, []);
-
-  return (
-    <div ref={ref} className="strip__scroll">
-      <div className="strip__row">
-        {items.map((c) => {
-          const inner = (
-            <>
-              <span className="frame">
-                <Image src={c.image} alt={`${c.title} voor ${c.client}`} fill sizes="(min-width: 900px) 30vw, 80vw" draggable={false} />
-              </span>
-              <span className="strip__cap">
-                {c.logo && (
-                  <span className="logo-tile" aria-hidden="true">
-                    <Image src={c.logo} alt="" width={14} height={14} draggable={false} />
-                  </span>
-                )}
-                {c.title}
-                {c.href && <span className="strip__more">Bekijk case</span>}
-              </span>
-            </>
-          );
-          return c.href ? (
-            <Link key={c.title} href={c.href} className="strip__item" draggable={false}>
-              {inner}
-            </Link>
-          ) : (
-            <div key={c.title} className="strip__item">
-              {inner}
-            </div>
-          );
-        })}
-      </div>
+  const [paused, setPaused] = useState(false);
+  const row = (hidden: boolean) => (
+    <div className="marq__row strip__row" aria-hidden={hidden || undefined}>
+      {items.map((c) => {
+        const inner = (
+          <>
+            <span className="frame">
+              <Image src={c.image} alt={hidden ? '' : `${c.title} voor ${c.client}`} fill sizes="(min-width: 900px) 30vw, 80vw" draggable={false} />
+            </span>
+            <span className="strip__cap">
+              {c.logo && (
+                <span className="logo-tile" aria-hidden="true">
+                  <Image src={c.logo} alt="" width={14} height={14} draggable={false} />
+                </span>
+              )}
+              {c.title}
+              {c.href && <span className="strip__more">Bekijk case</span>}
+            </span>
+          </>
+        );
+        return c.href ? (
+          <Link key={c.title} href={c.href} className="strip__item" tabIndex={hidden ? -1 : undefined} draggable={false}>
+            {inner}
+          </Link>
+        ) : (
+          <div key={c.title} className="strip__item">
+            {inner}
+          </div>
+        );
+      })}
     </div>
+  );
+  return (
+    <>
+      <Marquee row={row} duration={160} paused={paused} className="strip__mq" />
+      <div className="wrap strip__foot">
+        <PauseButton paused={paused} onToggle={() => setPaused(!paused)} label="Werkstrook" />
+      </div>
+    </>
   );
 }
 
 export function Reviews({ items, moreHref }: { items: { quote: string; name: string; role: string; avatar?: string }[]; moreHref?: string }) {
   const [i, setI] = useState(0);
   const [hold, setHold] = useState(false);
-  const t = items[i];
   const go = (d: number, auto = false) => {
     setI((cur) => (cur + d + items.length) % items.length);
     if (!auto) track('review_slide');
@@ -296,16 +210,21 @@ export function Reviews({ items, moreHref }: { items: { quote: string; name: str
       onFocus={() => setHold(true)}
       onBlur={(e) => !e.currentTarget.contains(e.relatedTarget as Node) && setHold(false)}
     >
-      <figure className="tcard" aria-live={hold ? 'polite' : 'off'}>
-        <blockquote>“{t.quote}”</blockquote>
-        <figcaption>
-          {t.avatar && <Image src={t.avatar} alt="" width={44} height={44} />}
-          <div>
-            <b>{t.name}</b>
-            <span>{t.role}</span>
-          </div>
-        </figcaption>
-      </figure>
+      {/* Alle reviews liggen op elkaar en faden in elkaar over; de kaart houdt de hoogte van de langste */}
+      <div className="tcard tstack" aria-live={hold ? 'polite' : 'off'}>
+        {items.map((r, k) => (
+          <figure key={r.name} className={`tslide${k === i ? ' is-on' : ''}`} aria-hidden={k !== i || undefined}>
+            <blockquote>“{r.quote}”</blockquote>
+            <figcaption>
+              {r.avatar && <Image src={r.avatar} alt="" width={44} height={44} />}
+              <div>
+                <b>{r.name}</b>
+                <span>{r.role}</span>
+              </div>
+            </figcaption>
+          </figure>
+        ))}
+      </div>
       <div className="slider">
         {items.length > 1 && (
           <>

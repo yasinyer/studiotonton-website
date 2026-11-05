@@ -175,6 +175,15 @@ export const cases: Case[] = [
     blurb: 'AI-features die mensen vertrouwen, ontworpen voor miljoenen gebruikers.',
   },
   {
+    title: 'Check je gesprek',
+    client: 'KBC Bank & Verzekeringen',
+    logo: '/img/logos/kbc.png',
+    year: 2025,
+    tags: ['UX/UI'],
+    image: '/img/cases/check.webp',
+    blurb: 'Een snelle manier om te checken of je echt met de bank belt, en niet met een oplichter.',
+  },
+  {
     title: 'Cyclis Bike Lease',
     client: 'Cyclis',
     year: 2023,
@@ -190,6 +199,15 @@ export const cases: Case[] = [
     tags: ['UX/UI', 'Motion'],
     image: '/img/cases/myhome.webp',
     blurb: 'Alles rond je huis en je auto overzichtelijk op één plek.',
+  },
+  {
+    title: '18e verjaardag in KBC Mobile',
+    client: 'KBC Bank & Verzekeringen',
+    logo: '/img/logos/kbc.png',
+    year: 2025,
+    tags: ['UX/UI', 'Motion'],
+    image: '/img/cases/18e.webp',
+    blurb: 'Een feestelijk moment als je 18 wordt, met begeleiding bij wat er verandert.',
   },
   {
     title: 'Onder het oppervlak',
@@ -218,7 +236,7 @@ export const clients: { name: string; src: string }[] = [
 
 export const stats = [
   { n: '3', suf: '×', label: 'Keer Best Banking App in the World, met KBC Mobile' },
-  { n: '11', label: 'Cases, van bank tot koffiebar' },
+  { n: String(cases.length), label: 'Cases, van bank tot koffiebar' }, // telt automatisch mee
   { n: '4', suf: '+', label: 'Jaar ervaring als UI designer, in teams en freelance' },
   { n: '1', label: 'Aanspreekpunt, van eerste schets tot oplevering' },
 ];

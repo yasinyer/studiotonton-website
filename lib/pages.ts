@@ -432,6 +432,37 @@ export const caseStudies: CaseStudy[] = [
     images: [{ src: '/img/cases/ai-1.webp', alt: 'Flow om met AI een afbeelding voor je kaart of rekening te maken', wide: true, w: 1920, h: 1080 }],
   },
   {
+    slug: 'check-je-gesprek',
+    title: 'Check je gesprek',
+    client: 'KBC Bank & Verzekeringen',
+    sector: 'Bank en verzekeringen',
+    location: 'KBC Mobile, België',
+    year: 2025,
+    services: ['UI design'],
+    quote: 'Een eenvoudige en snelle manier om oplichting te herkennen.',
+    metaDescription:
+      'Check je gesprek in KBC Mobile: tijdens een telefoongesprek nagaan of je echt met KBC spreekt of met een oplichter. UI design voor een fraudecontrole die in een paar tikken werkt.',
+    intro: [
+      'Check je gesprek in KBC Mobile is een fraudecontrole waarmee je nagaat of je echt met een medewerker van KBC in gesprek bent, en niet met een oplichter die zich voordoet als de bank.',
+      'Tijdens een gesprek controleert de app of er op dat moment een actief contact met KBC is. Krijg je geen bevestiging, dan beëindig je het gesprek en contacteer je Secure4u, de fraudedienst van KBC. Yasin ontwierp de interface als UI designer.',
+    ],
+    highlights: [
+      {
+        title: 'Zekerheid in een paar tikken',
+        text: 'Midden in een gesprek wil je geen omwegen. De controle is snel te vinden en meteen duidelijk.',
+      },
+      {
+        title: 'Een helder ja of nee',
+        text: 'Wel of geen actief contact met KBC: de app laat geen twijfel over wat je ziet.',
+      },
+      {
+        title: 'Een duidelijke volgende stap',
+        text: 'Geen bevestiging? Dan leidt de app je meteen naar Secure4u, de fraudedienst van KBC.',
+      },
+    ],
+    images: [{ src: '/img/cases/check-1.webp', alt: 'De flow van Check je gesprek, van melding tot contacthistoriek', wide: true, w: 1920, h: 1080 }],
+  },
+  {
     slug: 'cyclis-bike-lease',
     title: 'Cyclis Bike Lease',
     client: 'Cyclis',
@@ -492,6 +523,37 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     images: [{ src: '/img/cases/myhome-1.webp', alt: 'Schermen van MyHome en MyMobility in KBC Mobile', wide: true, w: 1920, h: 1080 }],
+  },
+  {
+    slug: '18e-verjaardag',
+    title: '18e verjaardag in KBC Mobile',
+    client: 'KBC Bank & Verzekeringen',
+    sector: 'Bank en verzekeringen',
+    location: 'KBC Mobile, België',
+    year: 2025,
+    services: ['UI design', 'Animatie'],
+    quote: 'Een onboardingmoment dat het officieel volwassen worden markeert.',
+    metaDescription:
+      'De 18e verjaardag in KBC Mobile: een feestelijk inlogscherm met een persoonlijke animatie, en daarna stap voor stap begeleiding bij de bank- en betaalfuncties die veranderen.',
+    intro: [
+      'Wanneer je 18 wordt, verwelkomt KBC Mobile je met een feestelijk inlogscherm en een persoonlijke animatie.',
+      'Daarna begeleidt de app je stap voor stap door de praktische veranderingen die bij volwassen worden horen, zoals het activeren of aanpassen van bank- en betaalfuncties. Zo combineert de app een emotioneel moment met duidelijke, gebruiksvriendelijke begeleiding.',
+    ],
+    highlights: [
+      {
+        title: 'Een moment om te vieren',
+        text: 'Een feestelijk inlogscherm en een persoonlijke animatie op de dag dat je 18 wordt.',
+      },
+      {
+        title: 'Stap voor stap volwassen',
+        text: 'Wat er verandert aan je bank- en betaalfuncties, uitgelegd in duidelijke stappen.',
+      },
+      {
+        title: 'Emotie en duidelijkheid samen',
+        text: 'Een feestelijke toon die de praktische uitleg niet in de weg zit.',
+      },
+    ],
+    images: [{ src: '/img/cases/18e-1.webp', alt: 'Feestelijke inlogschermen en de begeleiding na je 18e verjaardag', wide: true, w: 1920, h: 1080 }],
   },
   {
     slug: 'onder-het-oppervlak',
