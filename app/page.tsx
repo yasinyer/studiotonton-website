@@ -1,8 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { Faq } from '@/components/Faq';
 import { Footer } from '@/components/Chrome';
 import { ClientBand, Reviews, ServiceList, WorkStrip, type SvcItem } from '@/components/Home';
-import { Arrow, ArrowDiag, Plus } from '@/components/Icons';
+import { Arrow, ArrowDiag } from '@/components/Icons';
 import { Logo } from '@/components/Logo';
 import { WhatsAppButton } from '@/components/WhatsApp';
 import { Reveal } from '@/components/Reveal';
@@ -224,17 +225,7 @@ export default function Home() {
                 <Arrow />
               </Link>
             </div>
-            <div className="faq rv">
-              {faq.map((f, i) => (
-                <details key={f.q} open={i === 0}>
-                  <summary>
-                    {f.q}
-                    <Plus />
-                  </summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
+            <Faq items={faq} />
           </div>
           <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
         </section>
