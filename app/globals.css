@@ -692,3 +692,9 @@ a.strip__item:hover .strip__cap { color: var(--ink-950); }
 }
 .gallery__play svg { width: 24px; height: 24px; margin-left: 3px; }
 .gallery__video:hover .gallery__play { background: #161616; scale: 1.08; }
+
+/* Achter studio tonton: knop met witte vulling op de grijze kaart */
+.stme .chipbtn { background: var(--surface-raised); transition: background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); }
+.stme .chipbtn:hover { background: var(--surface-raised); box-shadow: 0 0 0 1px var(--border-strong); }
+:root[data-theme='dark'] .stme .chipbtn { background: rgba(var(--yy-ink), 0.08); }
+:root[data-theme='dark'] .stme .chipbtn:hover { background: rgba(var(--yy-ink), 0.14); box-shadow: none; }
