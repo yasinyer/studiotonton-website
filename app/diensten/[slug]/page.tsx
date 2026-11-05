@@ -1,9 +1,10 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { Faq } from '@/components/Faq';
 import { Footer, Header } from '@/components/Chrome';
 import { CaseCards } from '@/components/CaseCards';
-import { Arrow, Check, Plus } from '@/components/Icons';
+import { Arrow, Check } from '@/components/Icons';
 import { Reveal } from '@/components/Reveal';
 import { WhatsAppButton } from '@/components/WhatsApp';
 import { servicePages } from '@/lib/pages';
@@ -187,17 +188,7 @@ export default async function DienstPage({ params }: { params: Promise<{ slug: s
                 <Arrow />
               </Link>
             </div>
-            <div className="faq rv">
-              {page.faq.map((f, i) => (
-                <details key={f.q} open={i === 0}>
-                  <summary>
-                    {f.q}
-                    <Plus />
-                  </summary>
-                  <p>{f.a}</p>
-                </details>
-              ))}
-            </div>
+            <Faq items={page.faq} />
           </div>
         </section>
 
