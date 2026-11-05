@@ -482,11 +482,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   transition: background var(--dur-fast) var(--ease-out);
 }
 .band-pause:hover { background: rgba(var(--yy-ink), 0.1); }
-.mq { overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: none; cursor: grab; }
-.mq::-webkit-scrollbar { display: none; }
-.mq.is-dragging { cursor: grabbing; user-select: none; }
+.mq { overflow: hidden; touch-action: pan-y; cursor: grab; user-select: none; -webkit-user-select: none; }
+.mq.is-dragging { cursor: grabbing; }
 .mq.is-dragging a { pointer-events: none; }
-.mq__track { display: flex; width: max-content; }
+.mq__track { display: flex; width: max-content; will-change: transform; }
+.mq img { -webkit-user-drag: none; }
 .marq__row { display: flex; align-items: center; gap: 64px; padding-right: 64px; }
 .mlogo { display: inline-flex; align-items: center; height: 56px; }
 .mlogo__img { height: 56px; width: auto; max-width: 140px; object-fit: contain; filter: grayscale(1) contrast(0.9); opacity: 0.6; transition: opacity var(--dur-fast), filter var(--dur-fast); }
