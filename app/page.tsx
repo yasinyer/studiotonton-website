@@ -6,6 +6,7 @@ import { Arrow, ArrowDiag, Plus } from '@/components/Icons';
 import { Logo } from '@/components/Logo';
 import { WhatsAppButton } from '@/components/WhatsApp';
 import { Reveal } from '@/components/Reveal';
+import { CountUp } from '@/components/CountUp';
 import { caseStudyFor, servicePageFor } from '@/lib/pages';
 import { cases, clients, euro, faq, modes, owner, services, site, stats, steps, testimonials } from '@/lib/site';
 
@@ -78,11 +79,11 @@ export default function Home() {
             </p>
             <div className="sthead__cta">
               <Link href="/offerte" className="btn btn--lg" data-cta="hero">
-                Vraag je gratis offerte
+                Vraag je gratis offerte aan
                 <Arrow />
               </Link>
               <WhatsAppButton location="hero" className="chipbtn chipbtn--lg" />
-              <Link href="#werk" className="chipbtn chipbtn--lg">
+              <Link href="#werk" className="tlink tlink--lg">
                 Bekijk werk
               </Link>
               <span className="label is-on avail">
@@ -99,7 +100,7 @@ export default function Home() {
             {stats.map((s) => (
               <div key={s.label} className="stat">
                 <dt className="stat__n">
-                  {s.n}
+                  <CountUp to={Number(s.n)} />
                   {s.suf && <span className="stat__suf">{s.suf}</span>}
                 </dt>
                 <dd className="stat__d">{s.label}</dd>
@@ -189,7 +190,7 @@ export default function Home() {
             </div>
             <div className="hero__cta" style={{ marginTop: 28 }}>
               <Link href="/offerte" className="btn" data-cta="samenwerken">
-                Vraag je gratis offerte
+                Vraag je gratis offerte aan
                 <Arrow />
               </Link>
             </div>
@@ -198,8 +199,8 @@ export default function Home() {
             <span className="label">In hun woorden</span>
             <Reviews items={testimonials} moreHref={owner.recommendations || undefined} />
             {site.googleReviewsUrl && (
-              <a href={site.googleReviewsUrl} target="_blank" rel="noreferrer" className="svc__more" data-cta="google-reviews">
-                Bekijk of schrijf een review op Google <Arrow className="" />
+              <a href={site.googleReviewsUrl} target="_blank" rel="noreferrer" className="label gr-link" data-cta="google-reviews">
+                Bekijk of schrijf een review op Google <ArrowDiag className="arr-xs" />
               </a>
             )}
           </div>
@@ -219,7 +220,7 @@ export default function Home() {
                 of vraag meteen een offerte aan.
               </p>
               <Link href="/offerte" className="btn" style={{ marginTop: 8 }} data-cta="faq">
-                Vraag je gratis offerte
+                Vraag je gratis offerte aan
                 <Arrow />
               </Link>
             </div>

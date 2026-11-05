@@ -12,7 +12,7 @@ export const site = {
   whatsapp: '32493832540', // nummer voor de WhatsApp-knop, met landcode, zonder + of spaties — leeg = verborgen
   city: 'Hasselt',
   region: 'Limburg',
-  instagram: '', // bv. 'https://www.instagram.com/studiotonton' — leeg = verborgen
+  instagram: 'https://www.instagram.com/studio__tonton/', // leeg = verborgen
   linkedin: 'https://www.linkedin.com/company/studiotonton/', // leeg = verborgen
   responseTime: 'binnen 1 werkdag',
   googleReviewsUrl: 'https://g.page/r/CcG1MXsqgXKXEAE/review', // link naar je reviews op Google — leeg = verborgen

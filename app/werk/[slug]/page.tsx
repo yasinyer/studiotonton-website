@@ -115,16 +115,34 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           </div>
         </section>
 
-        <section className="section" style={{ paddingTop: 0 }}>
-          <div className="wrap gallery">
-            {study.images.map((img) => (
-              <figure key={img.src} className={`rv${img.wide ? ' gallery__wide' : ''}`}>
-                <Image src={img.src} alt={img.alt} width={img.w} height={img.h} sizes={img.wide ? '100vw' : '(min-width: 720px) 50vw, 100vw'} />
-                <figcaption>{img.alt}</figcaption>
-              </figure>
-            ))}
-          </div>
-        </section>
+        {study.images.length > 0 && (
+          <section className="section" style={{ paddingTop: 0 }}>
+            <div className="wrap gallery">
+              {study.images.map((img) => {
+                const pic = (
+                  <Image src={img.src} alt={img.href ? '' : img.alt} width={img.w} height={img.h} sizes={img.wide ? '100vw' : '(min-width: 720px) 50vw, 100vw'} />
+                );
+                return (
+                  <figure key={img.src} className={`rv${img.wide ? ' gallery__wide' : ''}`}>
+                    {img.href ? (
+                      <a href={img.href} target="_blank" rel="noreferrer" className="gallery__video" aria-label={`Bekijk op YouTube: ${img.alt}`}>
+                        {pic}
+                        <span className="gallery__play" aria-hidden="true">
+                          <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M8 5v14l11-7z" />
+                          </svg>
+                        </span>
+                      </a>
+                    ) : (
+                      pic
+                    )}
+                    <figcaption>{img.alt}</figcaption>
+                  </figure>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         {study.testimonial && (
           <section className="section" style={{ paddingTop: 0 }}>
@@ -142,29 +160,30 @@ export default async function CasePage({ params }: { params: Promise<{ slug: str
           </section>
         )}
 
+        {next.slug !== study.slug && (
+          <section className="section nextcase" aria-labelledby="next-case-title">
+            <div className="wrap">
+              <h2 id="next-case-title" className="label">
+                Volgende case
+              </h2>
+              <div style={{ marginTop: 20 }}>
+                <CaseCards refs={[next.slug]} />
+              </div>
+            </div>
+          </section>
+        )}
+
         <section className="section" style={{ background: 'var(--surface-sunk)' }}>
-          <div className="wrap">
-          <div className="band" style={{ background: 'transparent', padding: 0 }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+          <div className="wrap casecta">
+            <div className="casecta__text">
               <span className="label">Jouw project</span>
               <h2 className="t-h2">Ook zo’n project voor jouw zaak?</h2>
               <p className="t-body">Vertel in 2 minuten wat je zoekt. Je krijgt {site.responseTime} een antwoord, met een vaste prijs.</p>
-              <div>
-                <Link href="/offerte" className="btn btn--lg" data-cta={`case-${study.slug}`}>
-                  Vraag je gratis offerte
-                  <Arrow />
-                </Link>
-              </div>
             </div>
-            {next.slug !== study.slug && (
-              <div>
-                <span className="label">Volgende case</span>
-                <div style={{ marginTop: 14 }}>
-                  <CaseCards refs={[next.slug]} />
-                </div>
-              </div>
-            )}
-          </div>
+            <Link href="/offerte" className="btn btn--lg" data-cta={`case-${study.slug}`}>
+              Vraag je gratis offerte aan
+              <Arrow />
+            </Link>
           </div>
         </section>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(ld) }} />

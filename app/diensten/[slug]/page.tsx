@@ -83,7 +83,7 @@ export default async function DienstPage({ params }: { params: Promise<{ slug: s
                 <p className="t-lead">{page.lead}</p>
                 <div className="hero__cta">
                   <Link href={`/offerte?dienst=${service.key}`} className="btn btn--lg" data-cta={`dienst-${service.key}-hero`}>
-                    Vraag je gratis offerte
+                    Vraag je gratis offerte aan
                     <Arrow />
                   </Link>
                   <WhatsAppButton
@@ -183,7 +183,7 @@ export default async function DienstPage({ params }: { params: Promise<{ slug: s
               <span className="label">Veelgestelde vragen</span>
               <h2 className="t-h2">{service.title}: goed om te weten.</h2>
               <Link href={`/offerte?dienst=${service.key}`} className="btn" style={{ marginTop: 8 }} data-cta={`dienst-${service.key}-faq`}>
-                Vraag je gratis offerte
+                Vraag je gratis offerte aan
                 <Arrow />
               </Link>
             </div>
